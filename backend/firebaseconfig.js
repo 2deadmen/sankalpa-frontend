@@ -19,7 +19,7 @@ firebase.initializeApp({
 
 
 const db = getFirestore();
-const Users=db.collection("users").doc()
+const Users=db.collection("users")
 
 // this is for changing the name of the doc
 
