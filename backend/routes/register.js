@@ -42,44 +42,44 @@ router.post(
   }
 );
 
-router.post(
-  "/login",
+// router.post(
+//   "/login",
   
-  async (req, res) => {
+//   async (req, res) => {
    
 
-    try {
-      const { email, password } = req.body;
-      // const check = db.collection('users').doc(email);
-      // const doc = await check.get();
-      // const compass=doc.data().password
-      const snapshot = await db
-        .collection("users")
-        .where("email", "==", email)
-        .get(1);
-      var new_pass;
-      var new_id;
-      if (!snapshot) {
-        return res.status(400).json({ error: "Please try to login again " });
-      }
-      snapshot.forEach((doc) => {
-       (doc.data().password);
-        new_pass = doc.data().password;
-        new_id = doc.id;
-      });
+//     try {
+//       const { email, password } = req.body;
+//       // const check = db.collection('users').doc(email);
+//       // const doc = await check.get();
+//       // const compass=doc.data().password
+//       const snapshot = await db
+//         .collection("users")
+//         .where("email", "==", email)
+//         .get(1);
+//       var new_pass;
+//       var new_id;
+//       if (!snapshot) {
+//         return res.status(400).json({ error: "Please try to login again " });
+//       }
+//       snapshot.forEach((doc) => {
+//        (doc.data().password);
+//         new_pass = doc.data().password;
+//         new_id = doc.id;
+//       });
 
-      const compare = await bcrypt.compare(password, new_pass);
-      if (!compare) {
-        return res.status(400).json({ error: "Please try to login again" });
-      }
+//       const compare = await bcrypt.compare(password, new_pass);
+//       if (!compare) {
+//         return res.status(400).json({ error: "Please try to login again" });
+//       }
      
       
 
 
-      res.json({ new_id });
-    } catch (error) {
-      res.status(500).send({ error: error.message });
-    }
-  }
-);
+//       res.json({ new_id });
+//     } catch (error) {
+//       res.status(500).send({ error: error.message });
+//     }
+//   }
+// );
 module.exports = router;

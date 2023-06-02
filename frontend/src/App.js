@@ -1,23 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import React,{Suspense,useState} from "react";
+import Loader from "./Loader";
+import Register from "./pages/Register";
+import Home from "./pages/Home";
+import Regclg from "./pages/Regclg";
 
 function App() {
+  const [loader, setloader] = useState(false);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >new changes
-        </a>
-      </header>
-    </div>
+    <> 
+      <Router>
+      <Suspense>
+      <Loader  loader={loader}/>
+      <Routes>
+        <Route path ='/reg' element={<Register setloader={setloader}/>}/>
+        <Route path ='/' element={<Home setloader={setloader}/>}/>
+        <Route path ='/college_registration' element={<Regclg setloader={setloader}/>}/>
+      </Routes>
+      </Suspense>
+    </Router>
+ 
+
+    </>
   );
 }
 
