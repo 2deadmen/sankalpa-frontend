@@ -21,7 +21,7 @@ const Regclg = () => {
      uploadBytes(storageRef, image).then(() => {
       getDownloadURL(storageRef).then((url) => {
         setimageurl(url)
-        console.log(imageurl)
+        
         return url
     });
 });
@@ -64,7 +64,10 @@ const Regclg = () => {
          
         }),
       })
+      let json=await response.json()
       if (response.status===200){
+   
+        localStorage.setItem('token',json['team_id'])
         nav('/')
       }
 
