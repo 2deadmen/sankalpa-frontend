@@ -39,12 +39,12 @@ const Regclg = () => {
     }
     e.preventDefault()
     if (!image){
-        setwarning("image not uploaded")
+        setwarning("image not uploaded..please try again")
         return 
     }
     let url=await createUpload()
     if (!imageurl && !url){
-        setwarning("image not uploaded")
+        setwarning("image not uploaded...please try again")
         return
     }
    
