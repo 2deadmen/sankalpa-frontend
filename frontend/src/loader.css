@@ -1,0 +1,22 @@
+.loader {
+    position: fixed;
+    top: 40vh;
+    left: 40vw;
+    width: 20%;
+    height: 20%;
+    background: rgba(0, 0, 0, 0.8); /* Background color with opacity */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999; /* Ensure the loader is on top of other elements */
+    backdrop-filter: blur(10px); /* Apply the blur effect to the background */
+  }
+  body small{
+    color: rgb(175, 136, 6);
+  }
+  
+  .loader img {
+    width: 100px; /* Adjust the size of the image as needed */
+    height: 100px;
+  }
+  

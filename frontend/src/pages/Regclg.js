@@ -1,8 +1,8 @@
 import React,{useState} from 'react'
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { storage } from '../firebaseconfig';
-import { useNavigate } from 'react-router-dom';
-const Regclg = () => {
+import { json, useNavigate } from 'react-router-dom';
+const Regclg = (props) => {
     let nav=useNavigate()
     const [image, setimage] = useState(null);
     const [warning, setwarning] = useState("")
@@ -18,7 +18,7 @@ const Regclg = () => {
 
     const storageRef = ref(storage, `${image.name}`);
 
-     uploadBytes(storageRef, image).then(() => {
+   await  uploadBytes(storageRef, image).then(() => {
       getDownloadURL(storageRef).then((url) => {
         setimageurl(url)
         
@@ -27,24 +27,32 @@ const Regclg = () => {
 });
   }
   const handlesubmit=async(e)=>{
+    
     let staff=document.getElementById('staff').value
     let college=document.getElementById('name').value
+    let team=document.getElementById('teamname').value
+    team=team.toLowerCase();
     let utr=document.getElementById('utr').value
     let staff_number=document.getElementById('staff_number').value
     
 
-    if (staff==="" || college==="" || utr==="" || staff===""){
+    if (team==="" || staff==="" || college==="" || utr==="" || staff===""){
         setwarning("please fill out all the fields")
+        props.setloader(false)
         return
     }
     e.preventDefault()
     if (!image){
         setwarning("image not uploaded..please try again")
+        props.setloader(false)
         return 
     }
+    props.setloader(true)
     let url=await createUpload()
-    if (!imageurl && !url){
+
+     if (!imageurl && !url){
         setwarning("image not uploaded...please try again")
+        props.setloader(false)
         return
     }
    
@@ -56,6 +64,7 @@ const Regclg = () => {
 
         },
         body: JSON.stringify({
+          teamname:team,
           staff:staff,
           staff_number:staff_number,
           college:college,
@@ -69,12 +78,18 @@ const Regclg = () => {
       if (response.status===200){
    
         localStorage.setItem('token',json['team_id'])
+        props.setloader(false)
         nav('/build_team')
+      }
+      else{
+        setwarning(json['error'])
+        
       }
 
 
     } catch (error) {
-        setwarning(error)
+       console.log(json['error'])
+        
     }
     
        
@@ -87,6 +102,12 @@ const Regclg = () => {
       <div className="col-md-6">
         <h2 align="center"> Registration</h2>
         <form>
+        <div className="form-group py-2 my-2">
+            <label for="username" className='my-2'>Team Name</label>
+            <input type="text" required className="form-control" name="teamname" id="teamname" placeholder="Enter your Team name"/>
+          </div><small>
+            Team name should be same as provided by JSS ...you cant give random names 
+          </small>
           <div className="form-group py-2 my-2">
             <label for="username" className='my-2'>College Name</label>
             <input type="text" required className="form-control" name="name" id="name" placeholder="Enter your college name"/>
@@ -106,7 +127,7 @@ const Regclg = () => {
          </div> <br />
          <div className="form-group py-2 my-2">
             <label for="username" className='my-2'>UTR number</label>
-            <input type="text" required className="form-control" id="utr" placeholder="Enter UTR number"/>
+            <input type="text" required className="form-control" id="utr" minLength={12} placeholder="Enter UTR number"/>
           </div>
           <small>It is the UPI transaction ID in G pay</small>
           <div class="mb-3">
@@ -114,7 +135,7 @@ const Regclg = () => {
   <input class="form-control" required type="file" onChange={handleFile} id="formFile"/>
 </div>
 <small>Make sure you get the full screenshot using share option in your UPI application </small>
-<small color='red'>{warning} <br /></small> 
+<small style={{"color":"red"}}>{warning} <br /></small> 
           <button  type="submit" onClick={handlesubmit} className=" py-2 my-3  btn btn-primary">Submit</button>
         </form>
       </div>

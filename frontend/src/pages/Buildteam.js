@@ -1,7 +1,7 @@
 import React,{useState,useEffect} from 'react'
 import { useNavigate } from 'react-router-dom';
 
-const Buildteam = () => {
+const Buildteam = (props) => {
   const nav=useNavigate()
   const team_id=localStorage.getItem('token')
   useEffect(() => {
@@ -34,6 +34,7 @@ const Buildteam = () => {
 
   const handleSubmit =async (event) => {
     event.preventDefault();
+    props.setloader(true)
     let treasurehunt=[]
     let quiz=[]
     let advertisement=[]
@@ -84,10 +85,12 @@ const Buildteam = () => {
     })
     const json=await response.json()
     if (response.status===200){
+      props.setloader(false)
       nav('/')
 
     } 
     else{
+      props.setloader(false)
    setwarning(json['msg'])
     }  
     
@@ -98,8 +101,8 @@ const Buildteam = () => {
     <div className=' container  w-50'>
       <h2>Team Information</h2>
       <form onSubmit={handleSubmit}>
-      <h3>Treasure hunt</h3>
-      <div className="form-group">
+      <h3 className='my-3'>Treasure hunt</h3>
+      <div className="my-2 form-group">
             <label for="username">Member 1</label>
             <input type="text" className="form-control" required id="Tm1" placeholder="Enter your name"/>
           </div>
@@ -116,8 +119,8 @@ const Buildteam = () => {
             <input type="number" className="form-control" id="Tm2ph" placeholder="Enter your phone  number"/>
           </div>
           
-          <h3>Quiz</h3>
-          <div className="form-group">
+          <h3 className='my-3'>Quiz</h3>
+          <div className="my-2 form-group">
             <label for="username">Member 1</label>
             <input type="text" className="form-control"  id="Qm1" placeholder="Enter your name"/>
           </div>
@@ -133,7 +136,7 @@ const Buildteam = () => {
             <label for="password">Phone number </label>
             <input type="number" className="form-control" id="Qm2ph" placeholder="Enter your phone  number"/>
           </div>
-          <h3>Advertisement</h3>
+          <h3 className='my-3'>Advertisement</h3>
           <div className="form-group">
             <label for="username">Member 1</label>
             <input type="text" className="form-control" id="Am1" placeholder="Enter your name"/>
@@ -152,7 +155,7 @@ const Buildteam = () => {
           </div>
 
 
-          <h3>Video editing and Photography</h3>
+          <h3 className='my-3'>Video editing and Photography</h3>
       <div className="form-group">
             <label for="username">Member 1</label>
             <input type="text" className="form-control" id="Vm1" placeholder="Enter your name"/>
@@ -171,7 +174,7 @@ const Buildteam = () => {
           </div>
           
 
-        <h3>Cultural Event</h3>
+        <h3 className='my-3'>Cultural Event</h3>
 
         {users.map((user, index) => (
           <div key={index}>
@@ -202,19 +205,20 @@ const Buildteam = () => {
               />
             </div>
             {index > 0 && (
-              <button type="button" onClick={() => handleDeleteUser(index)}>
-                Delete User
+              <button type="button" className='my-2 float-end btn btn-danger' onClick={() => handleDeleteUser(index)}>
+                Delete member
               </button>
             )}
           </div>
         ))}
         <div className="form-group">
-          <button type="button" onClick={handleAddUser}>
-            Add User
+          <button type="button" className='my-2 btn btn-success' onClick={handleAddUser}>
+            Add member
           </button>
         </div>
-        <small style={{"color":"red"}}>{warning}</small>
-        <button type="submit">Submit</button>
+        <small>Make sure all the details are correct..you cant change your team after you submit this form... for any assistance contact organizers or volunteers</small> <br />
+        <small style={{"color":"red"}}>{warning}</small> <br />
+        <button type="submit" className='my-2 btn btn-primary'>Submit</button>
       </form>
     </div>
   );

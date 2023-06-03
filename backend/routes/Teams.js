@@ -25,17 +25,19 @@ router.post(
     async (req, res) => {
      
       try {
-        const { staff ,staff_number, college , utr , screenshot } = req.body;
+        const { staff ,staff_number, college , utr , screenshot,teamname } = req.body;
         const snapshot = await db
                 .collection("teamsreg")
-                .where("utr", "==", utr)
-                .get(1);
-                if (snapshot) {
-                          return res.status(400).json({ error: "Please try with different utr...this team already exists " });
+                .where("teamname", "==", teamname)
+                .get();
+                if (snapshot._size > 0) {
+                  console.log()
+                          return res.status(400).json({ error: "Please verify with your college...this team already exists " });
                         }
                         
         const team = await Teamsreg.add({
-         staff_name:staff,
+          teamname:teamname,
+          staff_name:staff,
          staff_phonenumber:staff_number,
          college_name:college,
          UTR:utr,

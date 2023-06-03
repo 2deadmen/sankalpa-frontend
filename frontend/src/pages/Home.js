@@ -1,6 +1,7 @@
 import React from 'react'
 
-const Home = () => {
+const Home = (props) => {
+  props.setloader(true)
   return (
     <div>Home</div>
   )

@@ -8,12 +8,13 @@ import {
 } from "firebase/auth";
 import { auth } from '../firebaseconfig';
 
-const Register = () => {
+const Register = (props) => {
   let nav=useNavigate()
   const [registered, setregistered] = useState(false);
   const provider = new GoogleAuthProvider();
   const HandleGoogle = async () => {
     var result=await signInWithPopup(auth, provider)
+           props.setloader(true)
            const response=await fetch('http://localhost:5000/api/auth/createuser',{
             method: "POST",
             headers: {
@@ -27,6 +28,7 @@ const Register = () => {
             }),
           })  
           const json = await response.json();
+          props.setloader(false)
           if (response.status===200){
               console.log(json)
               localStorage.setItem("email",result.user.email)
