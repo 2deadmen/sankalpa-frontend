@@ -26,7 +26,14 @@ router.post(
      
       try {
         const { staff ,staff_number, college , utr , screenshot } = req.body;
-
+        const snapshot = await db
+                .collection("teamsreg")
+                .where("utr", "==", utr)
+                .get(1);
+                if (snapshot) {
+                          return res.status(400).json({ error: "Please try with different utr...this team already exists " });
+                        }
+                        
         const team = await Teamsreg.add({
          staff_name:staff,
          staff_phonenumber:staff_number,
@@ -61,7 +68,7 @@ router.post(
         });
         console.log(team.id)
         
-       
+        
         res.json({msg:"reg successful"});
       } catch (error) {
         res.status(500).send({ msg: error.message });

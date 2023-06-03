@@ -1,4 +1,5 @@
 import React,{useState} from 'react'
+import { useNavigate } from 'react-router-dom';
 import {
   getAuth,
   GoogleAuthProvider,
@@ -8,6 +9,7 @@ import {
 import { auth } from '../firebaseconfig';
 
 const Register = () => {
+  let nav=useNavigate()
   const [registered, setregistered] = useState(false);
   const provider = new GoogleAuthProvider();
   const HandleGoogle = async () => {
@@ -27,6 +29,8 @@ const Register = () => {
           const json = await response.json();
           if (response.status===200){
               console.log(json)
+              localStorage.setItem("email",result.user.email)
+              nav('/college_registration')
           }else{
             console.log(json)
           }

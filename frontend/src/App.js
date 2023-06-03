@@ -4,6 +4,7 @@ import Loader from "./Loader";
 import Register from "./pages/Register";
 import Home from "./pages/Home";
 import Regclg from "./pages/Regclg";
+import Buildteam from "./pages/Buildteam";
 
 function App() {
   const [loader, setloader] = useState(false);
@@ -16,6 +17,7 @@ function App() {
         <Route path ='/reg' element={<Register setloader={setloader}/>}/>
         <Route path ='/' element={<Home setloader={setloader}/>}/>
         <Route path ='/college_registration' element={<Regclg setloader={setloader}/>}/>
+        <Route path ='/build_team' element={<Buildteam setloader={setloader}/>}/>
       </Routes>
       </Suspense>
     </Router>

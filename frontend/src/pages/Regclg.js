@@ -61,6 +61,7 @@ const Regclg = () => {
           college:college,
           utr:utr,
           screenshot:imageurl,
+          
          
         }),
       })
@@ -68,7 +69,7 @@ const Regclg = () => {
       if (response.status===200){
    
         localStorage.setItem('token',json['team_id'])
-        nav('/')
+        nav('/build_team')
       }
 
 
