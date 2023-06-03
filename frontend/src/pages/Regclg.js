@@ -64,6 +64,7 @@ const Regclg = (props) => {
 
         },
         body: JSON.stringify({
+          email:localStorage.getItem('email'),
           teamname:team,
           staff:staff,
           staff_number:staff_number,

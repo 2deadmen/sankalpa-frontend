@@ -74,6 +74,7 @@ const Buildteam = (props) => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
+        email:localStorage.getItem('email'),
         treasurehunt:treasurehunt,
         advertising: advertisement,
         quiz: quiz,

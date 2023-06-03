@@ -2,6 +2,7 @@ const express = require("express");
 const bcrypt = require("bcrypt");
 const router = express.Router();
 
+const { sendConfirmationEmail ,sendteamdetails}  = require('../sendmail');
 
 
 const { body, validationResult } = require("express-validator");
@@ -25,7 +26,7 @@ router.post(
     async (req, res) => {
      
       try {
-        const { staff ,staff_number, college , utr , screenshot,teamname } = req.body;
+        const { staff ,staff_number, college , utr , screenshot,teamname,email } = req.body;
         const snapshot = await db
                 .collection("teamsreg")
                 .where("teamname", "==", teamname)
@@ -44,7 +45,7 @@ router.post(
          ss_link:screenshot
         });
         team_id=team.id
-       
+        await sendConfirmationEmail(email,teamname,college,utr,screenshot)
         res.json({team_id });
       } catch (error) {
         res.status(500).send({ msg: error.message });
@@ -58,7 +59,7 @@ router.post(
     async (req, res) => {
      
       try {
-        const { treasurehunt ,advertising ,quiz ,photography,cultural ,team_id} = req.body;
+        const { treasurehunt ,advertising ,quiz ,photography,cultural ,team_id,email} = req.body;
         
         var team = await Team_members.add({
           treasurehunt:treasurehunt,
@@ -66,11 +67,11 @@ router.post(
           quiz:quiz,
           photography:photography,
           cultural:cultural,
-          team_id:team_id
+          team_id:team_id 
         });
         console.log(team.id)
         
-        
+        await sendteamdetails(email,treasurehunt,advertising,quiz,photography,cultural,team_id)
         res.json({msg:"reg successful"});
       } catch (error) {
         res.status(500).send({ msg: error.message });

@@ -7,7 +7,7 @@ function sendEmail(message) {
       service: 'gmail',
       auth: {
         user: 'kartikhegde.2002@gmail.com',
-        pass: process.env.PASS
+        pass: "haqpahjttjjlhzlj"
       }
     })
 
@@ -21,40 +21,55 @@ function sendEmail(message) {
   })
 }
 
-const sendConfirmationEmail = function({toUser}) {
+const sendConfirmationEmail = function(email,teamname,college,utr,screenshot) {
   const message = {
-    from: process.env.GOOGLE_USER,
+    from: "kartikhegde.2002@gmail.com",
     // to: toUser.email // in production uncomment this
-    to:toUser,
-    subject: 'Let`Stock - Activate Account',
+    to:email,
+    subject: 'Sankalpa 2023 - Registration confirmation ',
     html: `
-      <h3> Hello ${toUser} </h3>
-      <p>Thank you for registering into our Application. Much Appreciated! Just one last step is laying ahead of you...</p>
-      <p>To activate your account please follow this link: <a target="_" href="${process.env.DOMAIN}/api/auth/activate?email=${toUser}">/activate </a></p>
+      <h3> Hello ${email} </h3>
+      <p>Thank you for registering into Sankalpa 2023.</p>
+      <p>This email is to confirm that we have recieved your application and payment. </p>
+      <p>The payment details will be revieved shortly</p>
+      <p>Your UTR number is ${utr}</p>
+      <p>Your screenshot  is <a href="${screenshot}">${screenshot}</a></p>
       <p>Cheers</p>
-      <p>Let'Stock Application Team</p>
+      <p>All The Best team ${teamname}  !!! </p>
+      <p> We hope you get the best experience ${college}  !!! </p>
+      <p> SANKALPA 2023 </p>
     `
   }
 
   return sendEmail(message);
 }
 
-const sendResetPasswordEmail = ({toUser, hash}) => {
+const sendteamdetails = (email,treasurehunt,advertising,quiz,photography,cultural,team_id) => {
+  let len=cultural.length
+  let cul=``
+  for (i=0;i< len;i++){
+     if (i%2==0){
+      cul += `${cultural[i]},`
+  }}
+  console.log(cul)
   const message = {
     from: process.env.GOOGLE_USER,
     // to: toUser.email // in production uncomment this
-    to: toUser,
-    subject: 'Let`Stock - Reset Password',
+    to: email,
+    subject: 'Sankalpa 2023 - Team Details ',
     html: `
-      <h3>Hello ${toUser} </h3>
-      <p>To reset your password please follow this link: <a target="_" href="https://letstock-2bc58.web.app/Resetpass?email=${toUser}">Reset Password Link</a></p>
-      <p>this is your one time password for resetting the password ---<button>${hash}</button> </p>
+      <h3>Hello ${email} </h3>
+      <p>Treasurehunt team - ${treasurehunt[0]},${treasurehunt[2]}</p>
+      <p>Advertising team - ${advertising[0]},${advertising[2]}</p>
+      <p>Quiz team - ${quiz[0]},${quiz[2]}</p>
+      <p>Photography and video editing team - ${photography[0]},${photography[2]}</p>
+      <p>cultural team -${cul} </p>
       <p>Cheers,</p>
-      <p>Let'Stock Application Team</p>
+      <p> SANKALPA 2023 </p>
     `
   }
 
   return sendEmail(message);
 }
 
-module.exports={sendConfirmationEmail,sendResetPasswordEmail};
+module.exports={sendConfirmationEmail,sendteamdetails};
