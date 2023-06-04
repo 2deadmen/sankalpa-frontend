@@ -36,6 +36,7 @@ const Admin = () => {
   const [searchres, setsearchres] = useState([]);
   useEffect(() => {
     fetchallteams();
+    fetchallteamdetails();
   }, []);
 
   const fetchallteams = async () => {
@@ -98,7 +99,7 @@ const Admin = () => {
     );
     const json = await response.json();
     if (response.status === 200) {
-      setteamdetails(json["registered_users"]);
+      setallteamdetails(json["registered_users"]);
     } else {
       setwarning(json["error"]);
     }
@@ -123,13 +124,81 @@ const Admin = () => {
   
   const handleedit=async(team_id)=>{
     sessionStorage.setItem('edit',team_id)
+   
     nav(`/build_team`)
   }
+  let showares=[]
+  let showpres=[]
+  let showqres=[]
+  let showtres=[]
+  let showcres=[]
+  const [showdetails, setshowdetails] = useState([])
+  const showa=()=>{
+    for (let i=0;i<allteamdetails.length;i++){
+        showares.push({team_id:allteamdetails[i][0],name:allteamdetails[i][2][0],number:allteamdetails[i][2][1]})
+        showares.push({team_id:allteamdetails[i][0],name:allteamdetails[i][2][2],number:allteamdetails[i][2][3]}) 
+    }
+    setshowdetails(showares)
+  }
+  const showt=()=>{
+    for (let i=0;i<allteamdetails.length;i++){
+      showtres.push({team_id:allteamdetails[i][0],name:allteamdetails[i][1][0],number:allteamdetails[i][1][1]})
+      showtres.push({team_id:allteamdetails[i][0],name:allteamdetails[i][1][2],number:allteamdetails[i][1][3]}) 
+  }
+  setshowdetails(showtres)
+  }
+  const showp=()=>{
+    for (let i=0;i<allteamdetails.length;i++){
+      showpres.push({team_id:allteamdetails[i][0],name:allteamdetails[i][4][0],number:allteamdetails[i][4][1]})
+      showpres.push({team_id:allteamdetails[i][0],name:allteamdetails[i][4][2],number:allteamdetails[i][4][3]}) 
+  }
+  setshowdetails(showpres)
+  }
+  const showq=()=>{
+    for (let i=0;i<allteamdetails.length;i++){
+      showqres.push({team_id:allteamdetails[i][0],name:allteamdetails[i][5][0],number:allteamdetails[i][5][1]})
+      showqres.push({team_id:allteamdetails[i][0],name:allteamdetails[i][5][2],number:allteamdetails[i][5][3]}) 
+  } 
+  setshowdetails(showqres)
+  }
+  const showc=()=>{
+    for (let i=0;i<allteamdetails.length;i++){
+      for (let j=0;j<allteamdetails[i][3].length;j+=2){
+      if (allteamdetails[i][3][j]===null){
+        break
+      }
+      
+      showcres.push({team_id:allteamdetails[i][0],name:allteamdetails[i][3][j],number:allteamdetails[i][3][j+1]})
+
+    }
+    console.log(showcres)
+    setshowdetails(showcres)
+  }
+}
  
+ const handlecloseview =()=>{
+  setshowdetails([])
+ }
+ const handlesearchbyid=()=>{
+    console.log(allteams)
+    let key=document.getElementById('searchbarid').value
+     if(key===""){
+      setsearchres([])
+     }
+    for (let index = 0; index < allteams.length; index++) {
+      const element = allteams[index];
+      if (element[0]===key){
+        setsearchres([element])
+        break
+      }
+      
+    }
+ }
   return (
     <div className="container">
       {" "}
       <div>
+        <small>{warning}</small>
      {teamdetails.length !== 0 && <Modal
         open={open}
         onClose={handleClose}
@@ -167,7 +236,27 @@ const Admin = () => {
         <h1>Admin Panel</h1>
       </div>
 
+      <form class="d-flex" role="search">
+        <input
+          class="form-control me-2"
+          type="search"
+          id="searchbarid"
+          onKeyUp={handlesearchbyid}
+          placeholder="Search teams by team ID"
+          aria-label="Search"
+        />
+      </form>
    
+      <button onClick={showt} className="btn m-2 btn-primary">
+        treasureunt
+      </button>
+      <button onClick={showa} className="btn  m-2 btn-primary">advertising</button>
+      <button onClick={showp} className="btn m-2 btn-primary">photography and video editing</button>
+      <button onClick={showq} className="btn m-2 btn-primary">quiz</button>
+      <button onClick={showc} className="btn m-2 btn-primary">cultural</button>
+      {
+        
+      }
 
       <form class="d-flex" role="search">
         <input
@@ -201,6 +290,25 @@ const Admin = () => {
               </tr>
             );
           })}{" "}
+{ showdetails.length!==0   &&  <button className="btn btn-primary float-end" onClick={handlecloseview}>close</button>
+
+}
+{
+  showdetails.length!==0   && <div><b>total participants  : { showdetails.length}</b></div>
+}
+    <table cellPadding={10} cellSpacing={5}>
+          {
+
+            showdetails.length!==0   &&  showdetails.map((ele)=>{
+              return <tr key={ele}>
+                <td>{ele['team_id']}</td>
+                <td>{ele['name']}</td>
+                <td>{ele['number']}</td>
+               
+              </tr>
+            })
+          }</table>
+         
       </table>
       <h2 align="center">Registered teams</h2>
       total teams : {allteams.length}

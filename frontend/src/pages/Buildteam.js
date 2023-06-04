@@ -48,6 +48,30 @@ const Buildteam = (props) => {
     Vm1ph: "",
     Vm2: "",
     Vm2ph: "",
+    c1: "",
+    c1ph: "",
+    c2: "",
+    c2ph: "",
+    c3: "",
+    c3ph: "",
+    c4: "",
+    c4ph: "",
+    c5: "",
+    c5ph: "",
+    c6: "",
+    c6ph: "",
+    c7: "",
+    c7ph: "",
+    c8: "",
+    c8ph: "",
+    c9: "",
+    c9ph: "",
+    c10: "",
+    c10ph: "",
+    c11: "",
+    c11ph: "",
+    c12: "",
+    c12ph: "",
   });
 
   const handleInput = (event) => {
@@ -109,6 +133,31 @@ const Buildteam = (props) => {
           Qm1ph: teamdetails[4][1],
           Qm2: teamdetails[4][2],
           Qm2ph: teamdetails[4][3],
+
+          c1:teamdetails[5][0],
+          c1ph:teamdetails[5][1],
+          c2:teamdetails[5][2],
+          c2ph:teamdetails[5][3],
+          c3:teamdetails[5][4],
+          c3ph:teamdetails[5][5],
+          c4:teamdetails[5][6],
+          c4ph:teamdetails[5][7],
+          c5:teamdetails[5][8],
+          c5ph:teamdetails[5][9],
+          c6:teamdetails[5][10],
+          c6ph:teamdetails[5][11],
+          c7:teamdetails[5][12],
+          c7ph:teamdetails[5][13],
+          c8:teamdetails[5][14],
+          c8ph:teamdetails[5][15],
+          c9:teamdetails[5][16],
+          c9ph:teamdetails[5][17],
+          c10:teamdetails[5][18],
+          c10ph:teamdetails[5][19],
+          c11:teamdetails[5][20],
+          c11ph:teamdetails[5][21],
+          c12:teamdetails[5][22],
+          c12ph:teamdetails[5][22]
         });
         
       
@@ -156,6 +205,7 @@ const Buildteam = (props) => {
     let quiz = [];
     let advertisement = [];
     let photo = [];
+    let cultural=[]
     treasurehunt.push(formValues.Tm1);
     treasurehunt.push(formValues.Tm1ph);
     treasurehunt.push(formValues.Tm2);
@@ -175,14 +225,40 @@ const Buildteam = (props) => {
     photo.push(formValues.Vm1ph);
     photo.push(formValues.Vm2);
     photo.push(formValues.Vm2ph);
+    
 
+    cultural.push(formValues.c1)
+    cultural.push(formValues.c1ph)
+    cultural.push(formValues.c2)
+    cultural.push(formValues.c2ph)
+    cultural.push(formValues.c3)
+    cultural.push(formValues.c3ph)
+    cultural.push(formValues.c4)
+    cultural.push(formValues.c4ph)
+    cultural.push(formValues.c5)
+    cultural.push(formValues.c5ph)
+    cultural.push(formValues.c6)
+    cultural.push(formValues.c6ph)
+    cultural.push(formValues.c7)
+    cultural.push(formValues.c7ph)
+    cultural.push(formValues.c8)
+    cultural.push(formValues.c8ph)
+    cultural.push(formValues.c9)
+    cultural.push(formValues.c9ph)
+    cultural.push(formValues.c10)
+    cultural.push(formValues.c10ph)
+    cultural.push(formValues.c11)
+    cultural.push(formValues.c11ph)
+    cultural.push(formValues.c12)
+    cultural.push(formValues.c12ph)
     // Do something with the user data, e.g., send it to the server
-    let cultural = [];
-    for (let index = 0; index < users.length; index++) {
-      const element = users[index];
-      cultural.push(element["name"]);
-      cultural.push(element["phone"]);
-    }
+    // let cultural = [];
+
+    // for (let index = 0; index < users.length; index++) {
+    //   const element = users[index];
+    //   cultural.push(element["name"]);
+    //   cultural.push(element["phone"]);
+    // }
     console.log(cultural);
     const response = await fetch(
       "http://localhost:5000/api/team/team_members",
@@ -205,6 +281,7 @@ const Buildteam = (props) => {
     const json = await response.json();
     if (response.status === 200) {
       props.setloader(false);
+      sessionStorage.clear()
       nav("/");
     } else {
       props.setloader(false);
@@ -399,7 +476,266 @@ const Buildteam = (props) => {
           />
         </div>
         <h3 className="my-3">Cultural Event</h3>
-        {users.map((user, index) => (
+        <div className="form-group">
+          <label for="username">Member 1</label>
+          <input
+            type="text"
+            className="form-control"
+            name="c1"
+            onChange={handleInput}
+            value={formValues.c1}
+            placeholder="Enter your name"
+          />
+        </div>
+        <div className="form-group">
+          <label for="password">Phone number </label>
+          <input
+            type="number"
+            className="form-control"
+            name="c1ph"
+            onChange={handleInput}
+            value={formValues.c1ph}
+            placeholder="Enter your phone  number"
+          />
+        </div>
+        <div className="form-group">
+          <label for="username">Member 2</label>
+          <input
+            value={formValues.c2}
+            type="text"
+            className="form-control"
+            name="c2"
+            onChange={handleInput}
+            placeholder="Enter your name"
+          />
+        </div>
+        <div className="form-group">
+          <label for="password">Phone number </label>
+          <input
+            type="number"
+            value={formValues.c2ph}
+            className="form-control"
+            name="c2ph"
+            onChange={handleInput}
+            placeholder="Enter your phone  number"
+          />
+        </div> <div className="form-group">
+          <label for="username">Member 3</label>
+          <input
+            type="text"
+            className="form-control"
+            name="c3"
+            onChange={handleInput}
+            value={formValues.c3}
+            placeholder="Enter your name"
+          />
+        </div>
+        <div className="form-group">
+          <label for="password">Phone number </label>
+          <input
+            type="number"
+            className="form-control"
+            name="c3ph"
+            onChange={handleInput}
+            value={formValues.c3ph}
+            placeholder="Enter your phone  number"
+          />
+        </div>
+        <div className="form-group">
+          <label for="username">Member 4</label>
+          <input
+            value={formValues.c4}
+            type="text"
+            className="form-control"
+            name="c4"
+            onChange={handleInput}
+            placeholder="Enter your name"
+          />
+        </div>
+        <div className="form-group">
+          <label for="password">Phone number </label>
+          <input
+            type="number"
+            value={formValues.c4ph}
+            className="form-control"
+            name="c4ph"
+            onChange={handleInput}
+            placeholder="Enter your phone  number"
+          />
+        </div> <div className="form-group">
+          <label for="username">Member 5</label>
+          <input
+            type="text"
+            className="form-control"
+            name="c5"
+            onChange={handleInput}
+            value={formValues.c5}
+            placeholder="Enter your name"
+          />
+        </div>
+        <div className="form-group">
+          <label for="password">Phone number </label>
+          <input
+            type="number"
+            className="form-control"
+            name="c5ph"
+            onChange={handleInput}
+            value={formValues.c5ph}
+            placeholder="Enter your phone  number"
+          />
+        </div>
+        <div className="form-group">
+          <label for="username">Member 6</label>
+          <input
+            value={formValues.c6}
+            type="text"
+            className="form-control"
+            name="c6"
+            onChange={handleInput}
+            placeholder="Enter your name"
+          />
+        </div>
+        <div className="form-group">
+          <label for="password">Phone number </label>
+          <input
+            type="number"
+            value={formValues.c6ph}
+            className="form-control"
+            name="c6ph"
+            onChange={handleInput}
+            placeholder="Enter your phone  number"
+          />
+        </div> <div className="form-group">
+          <label for="username">Member c7</label>
+          <input
+            type="text"
+            className="form-control"
+            name="c7"
+            onChange={handleInput}
+            value={formValues.c7}
+            placeholder="Enter your name"
+          />
+        </div>
+        <div className="form-group">
+          <label for="password">Phone number </label>
+          <input
+            type="number"
+            className="form-control"
+            name="c7ph"
+            onChange={handleInput}
+            value={formValues.c7ph}
+            placeholder="Enter your phone  number"
+          />
+        </div>
+        <div className="form-group">
+          <label for="username">Member 8</label>
+          <input
+            value={formValues.c8}
+            type="text"
+            className="form-control"
+            name="c8"
+            onChange={handleInput}
+            placeholder="Enter your name"
+          />
+        </div>
+        <div className="form-group">
+          <label for="password">Phone number </label>
+          <input
+            type="number"
+            value={formValues.c8ph}
+            className="form-control"
+            name="c8ph"
+            onChange={handleInput}
+            placeholder="Enter your phone  number"
+          />
+        </div> <div className="form-group">
+          <label for="username">Member 9</label>
+          <input
+            type="text"
+            className="form-control"
+            name="c9"
+            onChange={handleInput}
+            value={formValues.c9}
+            placeholder="Enter your name"
+          />
+        </div>
+        <div className="form-group">
+          <label for="password">Phone number </label>
+          <input
+            type="number"
+            className="form-control"
+            name="c9ph"
+            onChange={handleInput}
+            value={formValues.c9ph}
+            placeholder="Enter your phone  number"
+          />
+        </div>
+        <div className="form-group">
+          <label for="username">Member 10</label>
+          <input
+            value={formValues.c10}
+            type="text"
+            className="form-control"
+            name="c10"
+            onChange={handleInput}
+            placeholder="Enter your name"
+          />
+        </div>
+        <div className="form-group">
+          <label for="password">Phone number </label>
+          <input
+            type="number"
+            value={formValues.c10ph}
+            className="form-control"
+            name="c10ph"
+            onChange={handleInput}
+            placeholder="Enter your phone  number"
+          />
+        </div> <div className="form-group">
+          <label for="username">Member 11</label>
+          <input
+            type="text"
+            className="form-control"
+            name="c11"
+            onChange={handleInput}
+            value={formValues.c11}
+            placeholder="Enter your name"
+          />
+        </div>
+        <div className="form-group">
+          <label for="password">Phone number </label>
+          <input
+            type="number"
+            className="form-control"
+            name="c11ph"
+            onChange={handleInput}
+            value={formValues.c11ph}
+            placeholder="Enter your phone  number"
+          />
+        </div>
+        <div className="form-group">
+          <label for="username">Member 12</label>
+          <input
+            value={formValues.c12}
+            type="text"
+            className="form-control"
+            name="c12"
+            onChange={handleInput}
+            placeholder="Enter your name"
+          />
+        </div>
+        <div className="form-group">
+          <label for="password">Phone number </label>
+          <input
+            type="number"
+            value={formValues.c12ph}
+            className="form-control"
+            name="c12ph"
+            onChange={handleInput}
+            placeholder="Enter your phone  number"
+          />
+        </div>
+        {/* {users.map((user, index) => (
           <div key={index}>
             <div className="form-group">
               <label htmlFor={`name${index}`}>Name</label>
@@ -446,7 +782,7 @@ const Buildteam = (props) => {
           >
             Add member
           </button>
-        </div>
+        </div> */}
         <small>
           Make sure all the details are correct..you cant change your team after
           you submit this form... for any assistance contact organizers or

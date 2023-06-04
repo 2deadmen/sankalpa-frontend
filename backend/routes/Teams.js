@@ -70,8 +70,10 @@ router.post(
           team_id:team_id 
         });
         console.log(team.id)
-        
-        await sendteamdetails(email,treasurehunt,advertising,quiz,photography,cultural,team_id)
+        if (email){
+          await sendteamdetails(email,treasurehunt,advertising,quiz,photography,cultural,team_id)
+
+        }
         res.json({msg:"reg successful"});
       } catch (error) {
         res.status(500).send({ msg: error.message });
