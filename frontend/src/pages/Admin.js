@@ -21,6 +21,10 @@ const style = {
 
 const Admin = () => {
   const nav=useNavigate()
+  if(!sessionStorage.getItem('admin-token')){
+    nav('/')
+  }
+ 
   const [open, setOpen] = React.useState(false);
   const handleOpen = async(team_id) => {
     await fetchteamdetails(team_id)
