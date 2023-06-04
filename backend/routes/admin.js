@@ -102,13 +102,12 @@ router.post(
         snapshot.forEach(doc => {
             var arr=[]
             console.log( doc.data().treasurehunt);
-           
+            arr.push(doc.data().team_id)
             arr.push(doc.data().treasurehunt)
             arr.push(doc.data().advertising)
-            arr.push(doc.data().cultural)
             arr.push(doc.data().photography)
             arr.push(doc.data().quiz)
-            
+            arr.push(doc.data().cultural)
             
             result.push(arr)
           });
@@ -164,4 +163,41 @@ router.post(
       }
     }
   );
+
+
+  router.post(
+    "/delete_team",
+    
+    async (req, res) => {
+     
+  
+      try {
+        const { team_id} = req.body;
+        const snapshot = await db
+          .collection("team_members")
+          .where("team_id", "==", team_id)
+        .get()
+        .then((snapshot) => {
+          snapshot.forEach((doc) => {
+            doc.ref.delete().then(() => {
+              res.json({msg:'Document successfully deleted.'});
+            }).catch((error) => {
+              res.status(500).send({ error: error.message });
+            });
+          });
+        })
+        .catch((error) => {
+          res.status(500).send({ error: error.message });
+        });
+        
+        
+       
+      } catch (error) {
+        res.status(500).send({ error: error.message });
+      }
+    }
+  );
+  
+
+
   module.exports = router;

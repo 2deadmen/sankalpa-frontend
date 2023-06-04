@@ -1,20 +1,120 @@
-import React,{useState,useEffect} from 'react'
-import { useNavigate } from 'react-router-dom';
+import React, { useState, useEffect } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 
 const Buildteam = (props) => {
-  const nav=useNavigate()
-  const team_id=localStorage.getItem('token')
+  const nav = useNavigate();
+  const params = useParams();
+  let team_id=localStorage.getItem('token')
+  if (sessionStorage.getItem('edit')){
+    team_id = sessionStorage.getItem('edit')
+
+  }
+
+   
   useEffect(() => {
+    
+    if (sessionStorage.getItem("edit")) {
+      team_id = sessionStorage.getItem('edit')
+      loadinghandler(sessionStorage.getItem("edit"));
+       
+    }
+    if (!team_id && !sessionStorage.getItem("edit")) {
+      nav("/college_registration");
+    }
+  }, []);
+  const loadinghandler=async(team_id)=>{
+       let json=await fetchteamdetails(team_id)
+      
+       setdetails(json)
+      }
+  const [teamdetails, setteamdetails] = useState([]);
   
-     if (!team_id){
-        nav('/college_registration')
-     }
-  }, [])
-  
+  const [users, setUsers] = useState([{ name: "", phone: "" }]);
+  const [warning, setwarning] = useState("");
+  const [formValues, setFormValues] = useState({
+    Tm1: "",
+    Tm1ph: "",
+    Tm2: "",
+    Tm2ph: "",
+    Qm1: "",
+    Qm1ph: "",
+    Qm2: "",
+    Qm2ph: "",
+    Am1: "",
+    Am1ph: "",
+    Am2: "",
+    Am2ph: "",
+    Vm1: "",
+    Vm1ph: "",
+    Vm2: "",
+    Vm2ph: "",
+  });
 
-  const [users, setUsers] = useState([{ name: '', phone: '' }]);
-  const [warning, setwarning] = useState("")
+  const handleInput = (event) => {
+    const { name, value } = event.target;
+    setFormValues((prevValues) => ({
+      ...prevValues,
+      [name]: value,
+    }));
+  };
 
+  const fetchteamdetails = async (team_id) => {
+    props.setloader(true);
+    const response = await fetch(
+      "http://localhost:5000/api/admin/team_details",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          team_id: team_id,
+        }),
+      }
+    );
+    const json = await response.json();
+    props.setloader(false)
+    if (response.status === 200) {
+      setteamdetails(json["registered_users"][0])
+      return json
+    } else {
+      setwarning(json["error"]);
+    }
+  };
+  const setdetails=async(json)=>{
+
+   let teamdetails=json["registered_users"][0]
+      
+    
+      //setting all values to fields
+      if (teamdetails.length !== 0) {
+        
+        setFormValues({
+          Tm1: teamdetails[1][0],
+          Tm1ph: teamdetails[1][1],
+          Tm2: teamdetails[1][2],
+          Tm2ph: teamdetails[1][3],
+
+          Am1: teamdetails[2][0],
+          Am1ph: teamdetails[2][1],
+          Am2: teamdetails[2][2],
+          Am2ph: teamdetails[2][3],
+
+          Vm1: teamdetails[3][0],
+          Vm1ph: teamdetails[3][1],
+          Vm2: teamdetails[3][2],
+          Vm2ph: teamdetails[3][3],
+
+          Qm1: teamdetails[4][0],
+          Qm1ph: teamdetails[4][1],
+          Qm2: teamdetails[4][2],
+          Qm2ph: teamdetails[4][3],
+        });
+        
+      
+         props.setloader(false);
+      }
+  }
   const handleInputChange = (index, event) => {
     const { name, value } = event.target;
     const updatedUsers = [...users];
@@ -23,7 +123,7 @@ const Buildteam = (props) => {
   };
 
   const handleAddUser = () => {
-    setUsers([...users, { name: '', phone: '' }]);
+    setUsers([...users, { name: "", phone: "" }]);
   };
 
   const handleDeleteUser = (index) => {
@@ -32,151 +132,273 @@ const Buildteam = (props) => {
     setUsers(updatedUsers);
   };
 
-  const handleSubmit =async (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    props.setloader(true)
-    let treasurehunt=[]
-    let quiz=[]
-    let advertisement=[]
-    let photo=[]
-    treasurehunt.push(document.getElementById('Tm1').value)
-    treasurehunt.push(document.getElementById('Tm1ph').value)
-    treasurehunt.push(document.getElementById('Tm2').value)
-    treasurehunt.push(document.getElementById('Tm2ph').value)
-   
-    quiz.push(document.getElementById('Qm1').value)
-    quiz.push(document.getElementById('Qm1ph').value)
-    quiz.push(document.getElementById('Qm2').value)
-    quiz.push(document.getElementById('Qm2ph').value)
+    if (sessionStorage.getItem('edit')){
+      const response=await fetch("http://localhost:5000/api/admin/delete_team",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          
+          team_id: team_id
+        }),
+      })
+      let json=await response.json()
+      if (response.status!==200){
+          setwarning(json['error'])
+      }
+    }
+    props.setloader(true);
+    let treasurehunt = [];
+    let quiz = [];
+    let advertisement = [];
+    let photo = [];
+    treasurehunt.push(formValues.Tm1);
+    treasurehunt.push(formValues.Tm1ph);
+    treasurehunt.push(formValues.Tm2);
+    treasurehunt.push(formValues.Tm2ph);
 
-    advertisement.push(document.getElementById('Am1').value)
-    advertisement.push(document.getElementById('Am1ph').value)
-    advertisement.push(document.getElementById('Am2').value)
-    advertisement.push(document.getElementById('Am2ph').value)
+    quiz.push(formValues.Qm1);
+    quiz.push(formValues.Qm1ph);
+    quiz.push(formValues.Qm2);
+    quiz.push(formValues.Qm2ph);
 
-    photo.push(document.getElementById('Vm1').value)
-    photo.push(document.getElementById('Vm1ph').value)
-    photo.push(document.getElementById('Vm2').value)
-    photo.push(document.getElementById('Vm2ph').value)
+    advertisement.push(formValues.Am1);
+    advertisement.push(formValues.Am1ph);
+    advertisement.push(formValues.Am2);
+    advertisement.push(formValues.Am2ph);
+
+    photo.push(formValues.Vm1);
+    photo.push(formValues.Vm1ph);
+    photo.push(formValues.Vm2);
+    photo.push(formValues.Vm2ph);
 
     // Do something with the user data, e.g., send it to the server
-    let cultural=[]
+    let cultural = [];
     for (let index = 0; index < users.length; index++) {
       const element = users[index];
-      cultural.push(element['name'])
-      cultural.push(element['phone'])
-      
+      cultural.push(element["name"]);
+      cultural.push(element["phone"]);
     }
-    console.log(cultural)
-    const response=await fetch('http://localhost:5000/api/team/team_members',{
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        email:localStorage.getItem('email'),
-        treasurehunt:treasurehunt,
-        advertising: advertisement,
-        quiz: quiz,
-        photography:photo,
-        cultural:cultural,
-        team_id:team_id
-       
-      }),
-    })
-    const json=await response.json()
-    if (response.status===200){
-      props.setloader(false)
-      nav('/')
-
-    } 
-    else{
-      props.setloader(false)
-   setwarning(json['msg'])
-    }  
-    
-
+    console.log(cultural);
+    const response = await fetch(
+      "http://localhost:5000/api/team/team_members",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: localStorage.getItem("email"),
+          treasurehunt: treasurehunt,
+          advertising: advertisement,
+          quiz: quiz,
+          photography: photo,
+          cultural: cultural,
+          team_id: team_id,
+        }),
+      }
+    );
+    const json = await response.json();
+    if (response.status === 200) {
+      props.setloader(false);
+      nav("/");
+    } else {
+      props.setloader(false);
+      setwarning(json["msg"]);
+    }
   };
 
   return (
-    <div className=' container  w-50'>
+    <div className=" container  w-50">
       <h2>Team Information</h2>
       <form onSubmit={handleSubmit}>
-      <h3 className='my-3'>Treasure hunt</h3>
-      <div className="my-2 form-group">
-            <label for="username">Member 1</label>
-            <input type="text" className="form-control" required id="Tm1" placeholder="Enter your name"/>
-          </div>
-          <div className="form-group">
-            <label for="password">Phone number </label>
-            <input type="number" className="form-control" required id="Tm1ph" placeholder="Enter your phone  number"/>
-          </div>
-          <div className="form-group">
-            <label for="username">Member 2</label>
-            <input type="text" className="form-control"  id="Tm2" placeholder="Enter your name"/>
-          </div>
-          <div className="form-group">
-            <label for="password">Phone number </label>
-            <input type="number" className="form-control" id="Tm2ph" placeholder="Enter your phone  number"/>
-          </div>
-          
-          <h3 className='my-3'>Quiz</h3>
-          <div className="my-2 form-group">
-            <label for="username">Member 1</label>
-            <input type="text" className="form-control"  id="Qm1" placeholder="Enter your name"/>
-          </div>
-          <div className="form-group">
-            <label for="password">Phone number </label>
-            <input type="number" className="form-control" id="Qm1ph" placeholder="Enter your phone  number"/>
-          </div>
-          <div className="form-group">
-            <label for="username">Member 2</label>
-            <input type="text" className="form-control" id="Qm2" placeholder="Enter your name"/>
-          </div>
-          <div className="form-group">
-            <label for="password">Phone number </label>
-            <input type="number" className="form-control" id="Qm2ph" placeholder="Enter your phone  number"/>
-          </div>
-          <h3 className='my-3'>Advertisement</h3>
-          <div className="form-group">
-            <label for="username">Member 1</label>
-            <input type="text" className="form-control" id="Am1" placeholder="Enter your name"/>
-          </div>
-          <div className="form-group">
-            <label for="password">Phone number </label>
-            <input type="number" className="form-control" id="Am1ph" placeholder="Enter your phone  number"/>
-          </div>
-          <div className="form-group">
-            <label for="username">Member 2</label>
-            <input type="text" className="form-control" id="Am2" placeholder="Enter your name"/>
-          </div>
-          <div className="form-group">
-            <label for="password">Phone number </label>
-            <input type="number" className="form-control" id="Am2ph" placeholder="Enter your phone  number"/>
-          </div>
-
-
-          <h3 className='my-3'>Video editing and Photography</h3>
-      <div className="form-group">
-            <label for="username">Member 1</label>
-            <input type="text" className="form-control" id="Vm1" placeholder="Enter your name"/>
-          </div>
-          <div className="form-group">
-            <label for="password">Phone number </label>
-            <input type="number" className="form-control" id="Vm1ph" placeholder="Enter your phone  number"/>
-          </div>
-          <div className="form-group">
-            <label for="username">Member 2</label>
-            <input type="text" className="form-control" id="Vm2" placeholder="Enter your name"/>
-          </div>
-          <div className="form-group">
-            <label for="password">Phone number </label>
-            <input type="number" className="form-control" id="Vm2ph" placeholder="Enter your phone  number"/>
-          </div>
-          
-
-        <h3 className='my-3'>Cultural Event</h3>
-
+        <h3 className="my-3">Treasure hunt</h3>
+        <div className="my-2 form-group">
+          <label for="username">Member 1</label>
+          <input
+            type="text"
+            className="form-control"
+            onChange={handleInput}
+            required
+            value={formValues.Tm1}
+            name="Tm1"
+            placeholder="Enter your name"
+          />
+        </div>
+        <div className="form-group">
+          <label for="password">Phone number </label>
+          <input
+            type="number"
+            className="form-control"
+            onChange={handleInput}
+            required
+            name="Tm1ph"
+            value={formValues.Tm1ph}
+            placeholder="Enter your phone  number"
+          />
+        </div>
+        <div className="form-group">
+          <label for="username">Member 2</label>
+          <input
+            type="text"
+            className="form-control"
+            onChange={handleInput}
+            value={formValues.Tm2}
+            name="Tm2"
+            placeholder="Enter your name"
+          />
+        </div>
+        <div className="form-group">
+          <label for="password">Phone number </label>
+          <input
+            type="number"
+            className="form-control"
+            onChange={handleInput}
+            name="Tm2ph"
+            value={formValues.Tm2ph}
+            placeholder="Enter your phone  number"
+          />
+        </div>
+        <h3 className="my-3">Quiz</h3>
+        <div className="my-2 form-group">
+          <label for="username">Member 1</label>
+          <input
+            type="text"
+            className="form-control"
+            onChange={handleInput}
+            value={formValues.Qm1}
+            name="Qm1"
+            placeholder="Enter your name"
+          />
+        </div>
+        <div className="form-group">
+          <label for="password">Phone number </label>
+          <input
+            type="number"
+            className="form-control"
+            value={formValues.Qm1ph}
+            onChange={handleInput}
+            name="Qm1ph"
+            placeholder="Enter your phone  number"
+          />
+        </div>
+        <div className="form-group">
+          <label for="username">Member 2</label>
+          <input
+            type="text"
+            className="form-control"
+            name="Qm2"
+            value={formValues.Qm2}
+            onChange={handleInput}
+            placeholder="Enter your name"
+          />
+        </div>
+        <div className="form-group">
+          <label for="password">Phone number </label>
+          <input
+            type="number"
+            className="form-control"
+            name="Qm2ph"
+            value={formValues.Qm2ph}
+            onChange={handleInput}
+            placeholder="Enter your phone  number"
+          />
+        </div>
+        <h3 className="my-3">Advertisement</h3>
+        <div className="form-group">
+          <label for="username">Member 1</label>
+          <input
+            value={formValues.Am1}
+            type="text"
+            className="form-control"
+            name="Am1"
+            onChange={handleInput}
+            placeholder="Enter your name"
+          />
+        </div>
+        <div className="form-group">
+          <label for="password">Phone number </label>
+          <input
+            type="number"
+            value={formValues.Am1ph}
+            className="form-control"
+            name="Am1ph"
+            onChange={handleInput}
+            placeholder="Enter your phone  number"
+          />
+        </div>
+        <div className="form-group">
+          <label for="username">Member 2</label>
+          <input
+            type="text"
+            className="form-control"
+            value={formValues.Am2}
+            name="Am2"
+            onChange={handleInput}
+            placeholder="Enter your name"
+          />
+        </div>
+        <div className="form-group">
+          <label for="password">Phone number </label>
+          <input
+            type="number"
+            className="form-control"
+            name="Am2ph"
+            value={formValues.Am2ph}
+            onChange={handleInput}
+            placeholder="Enter your phone  number"
+          />
+        </div>
+        <h3 className="my-3">Video editing and Photography</h3>
+        <div className="form-group">
+          <label for="username">Member 1</label>
+          <input
+            type="text"
+            className="form-control"
+            name="Vm1"
+            onChange={handleInput}
+            value={formValues.Vm1}
+            placeholder="Enter your name"
+          />
+        </div>
+        <div className="form-group">
+          <label for="password">Phone number </label>
+          <input
+            type="number"
+            className="form-control"
+            name="Vm1ph"
+            onChange={handleInput}
+            value={formValues.Vm1ph}
+            placeholder="Enter your phone  number"
+          />
+        </div>
+        <div className="form-group">
+          <label for="username">Member 2</label>
+          <input
+            value={formValues.Vm2}
+            type="text"
+            className="form-control"
+            name="Vm2"
+            onChange={handleInput}
+            placeholder="Enter your name"
+          />
+        </div>
+        <div className="form-group">
+          <label for="password">Phone number </label>
+          <input
+            type="number"
+            value={formValues.Vm2ph}
+            className="form-control"
+            name="Vm2ph"
+            onChange={handleInput}
+            placeholder="Enter your phone  number"
+          />
+        </div>
+        <h3 className="my-3">Cultural Event</h3>
         {users.map((user, index) => (
           <div key={index}>
             <div className="form-group">
@@ -206,23 +428,38 @@ const Buildteam = (props) => {
               />
             </div>
             {index > 0 && (
-              <button type="button" className='my-2 float-end btn btn-danger' onClick={() => handleDeleteUser(index)}>
+              <button
+                type="button"
+                className="my-2 float-end btn btn-danger"
+                onClick={() => handleDeleteUser(index)}
+              >
                 Delete member
               </button>
             )}
           </div>
         ))}
         <div className="form-group">
-          <button type="button" className='my-2 btn btn-success' onClick={handleAddUser}>
+          <button
+            type="button"
+            className="my-2 btn btn-success"
+            onClick={handleAddUser}
+          >
             Add member
           </button>
         </div>
-        <small>Make sure all the details are correct..you cant change your team after you submit this form... for any assistance contact organizers or volunteers</small> <br />
-        <small style={{"color":"red"}}>{warning}</small> <br />
-        <button type="submit" className='my-2 btn btn-primary'>Submit</button>
+        <small>
+          Make sure all the details are correct..you cant change your team after
+          you submit this form... for any assistance contact organizers or
+          volunteers
+        </small>{" "}
+        <br />
+        <small style={{ color: "red" }}>{warning}</small> <br />
+        <button type="submit" className="my-2 btn btn-primary">
+          Submit
+        </button>
       </form>
     </div>
   );
 };
 
-export default Buildteam
+export default Buildteam;
