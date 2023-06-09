@@ -5,6 +5,8 @@ import Loader from "./Loader";
 import Home from "./pages/Home";
 import Events from "./pages/Events";
 import Navbar from "./Navbar";
+import About from "./pages/About";
+import Footer from "./Footer";
 
 
 function App() {
@@ -19,11 +21,13 @@ function App() {
         {/* <Route path ='/' element={<Register setloader={setloader}/>}/> */}
         <Route path ='/' element={<Home setloader={setloader}/>}/>
         <Route path ='/events' element={<Events setloader={setloader}/>}/>
+        <Route path ='/about' element={<About setloader={setloader}/>}/>
         {/* <Route path ='/admin' element={<Admin setloader={setloader}/>}/>
         <Route path ='/admin-login' element={<Admin_login setloader={setloader}/>}/>
         <Route path ='/college_registration' element={<Regclg setloader={setloader}/>}/>
         <Route path ='/build_team' element={<Buildteam setloader={setloader}/>}/> */}
       </Routes>
+      <Footer/>
       </Suspense>
     </Router>
  

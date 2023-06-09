@@ -1,21 +1,29 @@
-import React from 'react'
+import React ,{useEffect}from 'react'
 import './styles.css' ;
 import './events.css'
+import treasure from './treasure.jpg'
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 const Events = () => {
+  useEffect(() => {
+    AOS.init({ duration: 2000 });
+
+
+}, []);
   return (
-    <div>
-      <div className='main'>
+    <div className='container'>
+      <div className='main '>
         <section id="home">
-          <h1>Events</h1>
-          <p>Join us for an exciting lineup of events!</p>
+        <h1 className='fs-1 eveenthead' data-aos="fade-in" align="center"><b className='animate-charcter'>EVENTS</b></h1>
+          <p className='fs-3' align='center'><b>Join us for an exciting lineup of events!</b></p>
         </section>
-    
-        <section id="treasure-hunt">
-          <h2>Treasure Hunt</h2>
+    <hr />
+        <section id="Treasure">
+          <h2 className='eveenthead'><b>Treasure Hunt</b></h2>
           <div className="event">
-            <img src="images/treasure_hunt.jpg" alt="Cultural Treasure Hunt" className="event-image"/>
-            <p>
+            <img src={treasure} alt="Cultural Treasure Hunt" className="event-image"/>
+            <p data-aos='fade-up'><h4>Instructions</h4>
               <ul>
                 <li>Number of participants: 02.</li>
                 <li>Instructions will be given by the organizing team.</li>
@@ -25,7 +33,20 @@ const Events = () => {
                 <li>The participants will be assigned a pre-assignment and overnight assignment.</li>
                 <li>One extra pair of dress is necessary; all the events will be conducted on the ground (Track pants & T-Shirt are optional).</li>
                 <li>Bring craft materials (Glue, Cutter, Colour Pen, Scissors) for the overnight assignment.</li>
+                </ul>  <h4>Student Co-ordinators</h4>
+            
+            <ul>
+                <li>Mr. Harsha Hiregoudar. M: 8861322818</li>
+                <li>Ms. Shreeja M. M: 8147188203</li>
               </ul>
+          
+            <h4>Event Co-ordinators</h4>
+          
+              <ul>
+                <li>Shri. Avinash Holihosur M: 7899155423</li>
+                <li>Shri. Vinayak Ingalagi M: 9964897105</li>
+              </ul>
+              
             </p>
             <p>
               {/* <button id="register-btn" onclick="registerForTreasureHunt()">Register Now</button> */}
@@ -34,16 +55,18 @@ const Events = () => {
         </section>
     
         <section id="advertisement">
-          <h2>Advertisement</h2>
+          <h2 className='eveenthead'><b>Advertisement</b></h2>
           <div className="event">
-            <img src="images/advertisement.jpg" alt="Advertisement" className="event-image"/>
-            <p>
+            <img src={treasure} alt="Advertisement"  className=" container event-image"/>
+            <p data-aos='fade-up'>
+              <h4>Instructions</h4>
               <ul>
                 <li>Number of participants: 02.</li>
                 <li>Participants need to get their own materials. (Sketch Pens, Colour Pencils, Pencils, Erasers, Colour Pens).</li>
                 <li>Indiscipline, indecent presentation, objectionable words or sentences will not be entertained and will be disqualified.</li>
-            
+              </ul>
             <h4>Student Co-ordinators</h4>
+            <ul>
                 <li>Mr. Harsha Hiregoudar. M: 8861322818</li>
                 <li>Ms. Shreeja M. M: 8147188203</li>
               </ul>
@@ -59,10 +82,11 @@ const Events = () => {
         </section>
     
         <section id="photography">
-          <h2>Photography</h2>
+
+          <h2 className='eveenthead'><b>Photography</b></h2>
           <div className="event">
             <img src="images/5.jpg" alt="Photography" className="event-image"/>
-            <p>
+           <p data-aos='fade-up'>
               <ul>
                 <li>Number of participants: 02.</li>
                 <li>One Participant should take 3 photos in JSS campus and another participant should edit it using photoshop and make it one picture.</li>
@@ -71,29 +95,29 @@ const Events = () => {
                 <li>One participant should record video of at least five minutes from campus and another participant should edit it using VITA Mobile editor and output video should be of one minute.</li>
                 <li>Participants will be given ten minutes to finish the video editing.</li>
               </ul>
-            </p>
-            <h3>Student Co-ordinators</h3>
-            <p>
+            
+            <h4>Student Co-ordinators</h4>
+            
               <ul>
                 <li>Mr. Megharaj SN M: 7892748464</li>
                 <li>Miss. Pragati Shetty M: 8277583779</li>
               </ul>
-            </p>
-            <h3>Event Co-ordinators</h3>
-            <p>
+            
+            <h4>Event Co-ordinators</h4>
+            
               <ul>
                 <li>Dr. Shashikant M: 9742350436</li>
                 <li>Shri. Prashant Medkinal M: 7406560114</li>
               </ul>
-            </p>
+              </p> 
           </div>
         </section>
     
         <section id="quiz">
-          <h2>Quiz</h2>
+           <h2 className='eveenthead'><b>Quiz</b></h2>
           <div className="event">
             <img src="images/4.jpg" alt="Quiz" className="event-image"/>
-            <p>
+            <p data-aos='fade-up'>
               <ul>
                 <li>Number of participants: 02.</li>
                 <li>There will be 6 rounds including Elimination.</li>
@@ -103,30 +127,30 @@ const Events = () => {
                 <li>All round scores will be considered for final results.</li>
                 <li>Mobile phone and other electronic gadgets are strictly prohibited.</li>
               </ul>
-            </p>
-            <h3>Student Co-ordinators</h3>
-            <p>
+         
+            <h4>Student Co-ordinators</h4>
+        
               <ul>
                 <li>Miss. Ruchita Rokade M: 8310231694</li>
                 <li>Mr. Durgesh Prabhu M: 9902010831</li>
               </ul>
-            </p>
-            <h3>Event Co-ordinators</h3>
-            <p>
+          
+            <h4>Event Co-ordinators</h4>
+        
               <ul>
                 <li>Dr. Ronil Manohar M: 9845787707</li>
                 <li>Smt. Rajani Talikoti M: 9480776761</li>
               </ul>
-            </p>
+               </p>
           </div>
         </section>
     
      
         <section id="cultural">
-          <h2>Cultural</h2>
+        <h2 className='eveenthead'><b>Cultural </b></h2>
           <div className="event">
             <img src="images/treasure_hunt.jpg" alt="Cultural" className="event-image"/>
-            <p>
+            <p data-aos='fade-up'>
               <ul>
                 <li>Time limit: 6+1 Min.</li>
                 <li>Number of Students: 08 to 12.</li>
@@ -136,16 +160,16 @@ const Events = () => {
                 <li>Throwing of flowers, colors, and spraying of foam is prohibited.</li>
                 <li>Separate special prizes will be awarded and also considered for General Championship.</li>
               </ul>
-            </p>
-            <h3>Student Co-ordinators</h3>
-            <p>
+          
+            <h4>Student Co-ordinators</h4>
+
               <ul>
                 <li>Miss. Varsha DM: 8073004476</li>
                 <li>Miss. Mahalakshmi M: 8197950726</li>
               </ul>
-            </p>
-            <h3>Event Co-ordinators</h3>
-            <p>
+       
+            <h4>Event Co-ordinators</h4>
+            
               <ul>
                 <li>Smt. Vibha S. Mugali M: 9448548033</li>
                 <li>Shri. Anand V. Korawar M: 9880691257</li>

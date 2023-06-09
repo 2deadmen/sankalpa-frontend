@@ -1,5 +1,5 @@
 import React from 'react'
-import nav from './pages/topnav.jpg'
+import nav from './pages/topnav.png'
 import { Link } from 'react-router-dom'
 import { HashLink } from 'react-router-hash-link';
 import ScrollToTop from "react-scroll-to-top";
@@ -22,8 +22,8 @@ const Navbar = () => {
             <Link className="nav-link  mx-2 " to='/events'><h5><b>EVENTS</b></h5></Link>
             <a className="nav-link mx-2" href='#'><h5><b>BROCHURE</b></h5></a>
             <HashLink className="nav-link mx-2" smooth to='/#gallery'><h5><b>MEMORIES</b></h5></HashLink>
-            <a className="nav-link mx-2" href="#"><h5><b>ABOUT US</b></h5></a>
-            
+           
+            <Link className="nav-link  mx-2 " to='/about'><h5><b>ABOUT</b></h5></Link>
           </div>
         </div>
       </div>

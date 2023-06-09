@@ -1,8 +1,20 @@
-import React from 'react';
+import React, { useEffect } from "react";
 import './styles.css' ;
 import { Link } from 'react-router-dom';
 import logo  from './imagesankalp.png'
+import treasure from './treasure.jpg'
+import advert from './advert.jpg'
+import { HashLink } from 'react-router-hash-link';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+
+import underline from './underline.png'
 const Home = (props) => {
+  useEffect(() => {
+    AOS.init({ duration: 2000 });
+
+
+}, []);
   // props.setloader(true)
   const countdownDate = new Date("2023-06-20T00:00:00").getTime();
 
@@ -49,7 +61,14 @@ const Home = (props) => {
 
 <div className="countdown container">
     <div className="countdown-timer container">
-      <p className='countdown-label fs-1'>Time Remaining:</p>
+      <p className=' countdown-label waviy  fs-1'>
+      <svg viewBox="0 0 1320 160">
+	<text x="50%" y="50%" dy=".35em" text-anchor="middle">
+		TIME REMAINING :
+	</text>
+</svg>
+        
+      </p>
       <div className="countdown-digits col  ">
         <span className="countdown-digit " id="days">00</span><b className='fs-4'> Days</b>
         <span className="countdown-digit " id="hours">00</span><b className='fs-4'> Hours</b>
@@ -60,21 +79,23 @@ const Home = (props) => {
   </div>
 
   </section>
+<hr  className='container'/>
 
-  <section>
-      <div className="events">
-        <div className="container  justify-content-center ">
-          <div className="row">
-            <h1 className='fs-1 eveenthead' data-aos="fade-in" align="center"><b >EVENTS</b></h1>
+  <section  className=''>
+      <div className="events ">
+        <div style={{"margin":"0% !important"}} className="container px-5  justify-content-center ">
+          <div className="row" data-aos='slide-right'>
+            <h1 className='fs-1 eveenthead' data-aos="fade-in" align="center"><b className='animate-charcter'>EVENTS</b></h1>
            <hr />
-            <div className="box">
+         
+            <div className="box  firstrowevent">
             <div className="body">
                 <div className="imgContainer">
-                    <img src="https://images.pexels.com/photos/3601422/pexels-photo-3601422.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt=""/>
+                    <img className='' src={treasure} alt=""/>
                 </div>
                 <div className="content d-flex flex-column align-items-center justify-content-center">
                     <div>
-                        <h3 className="text-white fs-5">Post Title</h3>
+                        <h3 className="text-white fs-5"><HashLink style={{"text-decoration":"none","color":"white"}} smooth to='/events/#Treasure'>Treasure Hunt <i class="fa-solid fa-arrow-up-right-from-square"></i></HashLink> </h3>
                         <p className="fs-6 text-white">Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo sed cum neque, rem provident ex. Laboriosam perspiciatis modi eveniet in?</p>
                     </div>
                 </div>
@@ -83,6 +104,21 @@ const Home = (props) => {
             
 
           
+        <div className="box ">
+            <div className="body">
+                <div className="imgContainer">
+                    <img src={advert} alt=""/>
+                    
+                </div>
+                <div className="content d-flex flex-column align-items-center justify-content-center">
+                    <div>
+                    <h3 className="text-white fs-5"><HashLink style={{"text-decoration":"none","color":"white"}} smooth to='/events/#advertisement'>Advertising <i class="fa-solid fa-arrow-up-right-from-square"></i></HashLink> </h3>
+                        <p className="fs-6 text-white">Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo sed cum neque, rem provident ex. Laboriosam perspiciatis modi eveniet in?</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+       
         <div className="box firstrowevent">
             <div className="body">
                 <div className="imgContainer">
@@ -90,21 +126,7 @@ const Home = (props) => {
                 </div>
                 <div className="content d-flex flex-column align-items-center justify-content-center">
                     <div>
-                        <h3 className="text-white fs-5">Post Title</h3>
-                        <p className="fs-6 text-white">Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo sed cum neque, rem provident ex. Laboriosam perspiciatis modi eveniet in?</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-            
-        <div className="box">
-            <div className="body">
-                <div className="imgContainer">
-                    <img src="https://images.pexels.com/photos/3601422/pexels-photo-3601422.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt=""/>
-                </div>
-                <div className="content d-flex flex-column align-items-center justify-content-center">
-                    <div>
-                        <h3 className="text-white fs-5">Post Title</h3>
+                    <h3 className="text-white fs-5"><HashLink style={{"text-decoration":"none","color":"white"}} smooth to='/events/#photography'>Photography and Video editing <i class="fa-solid fa-arrow-up-right-from-square"></i></HashLink> </h3>
                         <p className="fs-6 text-white">Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo sed cum neque, rem provident ex. Laboriosam perspiciatis modi eveniet in?</p>
                     </div>
                 </div>
@@ -115,38 +137,19 @@ const Home = (props) => {
 
   
 
-     <div className="box secondrowevent">
+     <div className="box  ">
             <div className="body">
                 <div className="imgContainer">
                     <img src="https://images.pexels.com/photos/3601422/pexels-photo-3601422.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt=""/>
-                </div>
+                </div>  
                 <div className="content d-flex flex-column align-items-center justify-content-center">
                     <div>
-                        <h3 className="text-white fs-5">Post Title</h3>
+                    <h3 className="text-white fs-5"><HashLink style={{"text-decoration":"none","color":"white"}} smooth to='/events/#quiz'>Quiz <i class="fa-solid fa-arrow-up-right-from-square"></i></HashLink> </h3>
                         <p className="fs-6 text-white">Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo sed cum neque, rem provident ex. Laboriosam perspiciatis modi eveniet in?</p>
                     </div>
                 </div>
             </div>
         </div>
-        <div className="box">
-            <div className="body">
-                <div className="imgContainer">
-                    <img src="https://images.pexels.com/photos/3601422/pexels-photo-3601422.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt=""/>
-                </div>
-                <div className="content d-flex flex-column align-items-center justify-content-center">
-                    <div>
-                        <h3 className="text-white fs-5">Post Title</h3>
-                        <p className="fs-6 text-white">Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo sed cum neque, rem provident ex. Laboriosam perspiciatis modi eveniet in?</p>
-                    </div>
-                </div>
-            </div>
-       
-      
-     </div>
-      
-      
-
-
           </div>
         </div>
       </div>
@@ -259,48 +262,7 @@ const Home = (props) => {
 
 
 
-<section className='footer'>
-     
-      <div className='contactcol row'>
-      <h3 align="center" className='headingcontact'><b>CONTACT US </b>  </h3>
-     <hr />
-        <div className="container addresslist">
-            <div className="info">
-              <div className="address">
-                <i className="bi bi-geo-alt"></i>
-                <h4>Location:</h4>
-                <p>A108 Adam Street, New York, NY 535022</p>
-              </div>
 
-              <div className="email">
-                <i className="bi bi-envelope"></i>
-                <h4>Email:</h4>
-                <p>info@example.com</p>
-              </div>
-
-              <div className="phone">
-                <i className="bi bi-phone"></i>
-                <h4>Call:</h4>
-                <p>+1 5589 55488 55s</p>
-              </div>
-
-            </div>
-
-          </div>
-          <div className='map justify-content-center'>
-     <iframe width="400" height="200" frameborder="0" src="https://www.bing.com/maps/embed?h=400&w=500&cp=15.441198324746921~75.01940395541874&lvl=17.195619338788426&typ=d&sty=r&src=SHELL&FORM=MBEDV8" >
-     </iframe>
-     
-</div>
-          </div>
-     <hr />
-          <div className=" footer footer-content ">
-          <p>&copy; 2023 Event Page. All rights reserved.</p>
-          <p>Designed by Your Name</p>
-        </div>
-
-
-</section>
 
 
   </div>
