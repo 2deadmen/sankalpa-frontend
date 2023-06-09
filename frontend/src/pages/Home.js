@@ -1,7 +1,7 @@
 import React from 'react';
 import './styles.css' ;
+import { Link } from 'react-router-dom';
 import logo  from './imagesankalp.png'
-import nav from './topnav.jpg'
 const Home = (props) => {
   // props.setloader(true)
   const countdownDate = new Date("2023-06-20T00:00:00").getTime();
@@ -18,16 +18,17 @@ const Home = (props) => {
       const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
       // Display the remaining time
+    try {
       document.getElementById("days").textContent = days.toString();
       document.getElementById("hours").textContent = hours.toString().padStart(2, "0");
       document.getElementById("minutes").textContent = minutes.toString().padStart(2, "0");
       document.getElementById("seconds").textContent = seconds.toString().padStart(2, "0");
 
+    } catch (error) {
+      
+    }
       // Identify and use the individual values as needed
-      console.log("Days:", days);
-      console.log("Hours:", hours);
-      console.log("Minutes:", minutes);
-      console.log("Seconds:", seconds);
+  
 
       // Stop the countdown when the timer reaches zero
       if (distance < 0) {
@@ -41,27 +42,6 @@ const Home = (props) => {
   return (
     <div>
 
-<nav><img src={nav} width="100%" alt="Logo" />  
-<nav className="navbar navbar-expand-lg  navbar-dark ">
- 
-  <div className="container-fluid ">
-  
- 
-    <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-      <span className="navbar-toggler-icon "></span>
-    </button>
-    <div className="collapse navbar-collapse justify-content-end  " id="navbarNavAltMarkup">
-      <div className="navbar-nav ">
-        <a className="nav-link  active mx-2" aria-current="page" href="#"><h4><b>HOME</b></h4></a>
-        <a className="nav-link  mx-2 " href="#"><h5><b>EVENTS</b></h5></a>
-        <a className="nav-link mx-2" href="#"><h5><b>BROCHURE</b></h5></a>
-        <a className="nav-link mx-2" href="#"><h5><b>MEMORIES</b></h5></a>
-        <a className="nav-link mx-2" href="#"><h5><b>ABOUT US</b></h5></a>
-        
-      </div>
-    </div>
-  </div>
-</nav></nav>
 
 {/* logo section */} <section>
 <div align="center" className='container my-5'><img src={logo}  height="250" className='sankalp-logo'  data-aos="zoom-in" style={{"max-height": "50%","width":"50vw"}} alt="SLogo" /> 
@@ -273,6 +253,12 @@ const Home = (props) => {
     </section>
 
 
+<section>
+  
+</section>
+
+
+
 <section className='footer'>
      
       <div className='contactcol row'>
@@ -307,8 +293,11 @@ const Home = (props) => {
      
 </div>
           </div>
-     
-    
+     <hr />
+          <div className=" footer footer-content ">
+          <p>&copy; 2023 Event Page. All rights reserved.</p>
+          <p>Designed by Your Name</p>
+        </div>
 
 
 </section>
