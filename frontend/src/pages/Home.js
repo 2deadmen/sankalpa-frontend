@@ -81,6 +81,69 @@ const Home = (props) => {
   </section>
 <hr  className='container'/>
 
+
+<section >
+  <div className="container spotlight">
+  
+<div className= "containerpic">
+    <div className= "card">
+      <div className= "image">
+        <img  src ="https://i.pinimg.com/originals/a4/7b/a5/a47ba59b4a353e0928ef0551ca44f980.jpg"/>
+      </div>
+      <div className= "content">
+        <h3>VASUKI VAIBHAV</h3>
+    
+      </div>
+    </div>    
+  </div>
+  <div><h1 className="eveenthead" style={{"padding-top":"5vh"}}> <b>Harmonious Heights</b> </h1>
+  <h2> <b>A Melodic Odyssey</b></h2>
+  <p style={{"padding-top":"5vh","text-align":"center"}} className="fs-5">Mesmerizing melodies by Vasuki Vaibhav, <br />igniting the stage on Day 2!</p>
+  
+<div class="snowflakes" aria-hidden="true">
+  <div class="snowflake">
+ ♬  
+  </div>
+  <div class="snowflake">
+  ♫
+  </div>
+  <div class="snowflake">
+  ♪ 
+  </div>
+  <div class="snowflake">
+  ♩
+  </div>
+  <div class="snowflake">
+ ♬  
+  </div>
+  <div class="snowflake">
+  ♫
+  </div>
+  <div class="snowflake">
+  ♪ 
+  </div>
+  <div class="snowflake">
+  ♩
+  </div>
+  <div class="snowflake">
+ ♬  
+  </div>
+  <div class="snowflake">
+  ♫
+  </div>
+  <div class="snowflake">
+  ♪ 
+  </div>
+  <div class="snowflake">
+  ♩
+  </div>
+</div>
+  </div>
+  </div>
+
+</section>
+
+
   <section  className=''>
       <div className="events ">
         <div style={{"margin":"0% !important"}} className="container px-5  justify-content-center ">
@@ -95,7 +158,7 @@ const Home = (props) => {
                 </div>
                 <div className="content d-flex flex-column align-items-center justify-content-center">
                     <div>
-                        <h3 className="text-white fs-5"><HashLink style={{"text-decoration":"none","color":"white"}} smooth to='/events/#Treasure'>Treasure Hunt <i class="fa-solid fa-arrow-up-right-from-square"></i></HashLink> </h3>
+                        <h3 className="text-white fs-5"><HashLink style={{"text-decoration":"none","color":"white"}} smooth to='/events/#Treasure'>Treasure Hunt <i className="fa-solid fa-arrow-up-right-from-square"></i></HashLink> </h3>
                         <p className="fs-6 text-white">Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo sed cum neque, rem provident ex. Laboriosam perspiciatis modi eveniet in?</p>
                     </div>
                 </div>
@@ -112,7 +175,7 @@ const Home = (props) => {
                 </div>
                 <div className="content d-flex flex-column align-items-center justify-content-center">
                     <div>
-                    <h3 className="text-white fs-5"><HashLink style={{"text-decoration":"none","color":"white"}} smooth to='/events/#advertisement'>Advertising <i class="fa-solid fa-arrow-up-right-from-square"></i></HashLink> </h3>
+                    <h3 className="text-white fs-5"><HashLink style={{"text-decoration":"none","color":"white"}} smooth to='/events/#advertisement'>Advertising <i className="fa-solid fa-arrow-up-right-from-square"></i></HashLink> </h3>
                         <p className="fs-6 text-white">Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo sed cum neque, rem provident ex. Laboriosam perspiciatis modi eveniet in?</p>
                     </div>
                 </div>
@@ -126,7 +189,7 @@ const Home = (props) => {
                 </div>
                 <div className="content d-flex flex-column align-items-center justify-content-center">
                     <div>
-                    <h3 className="text-white fs-5"><HashLink style={{"text-decoration":"none","color":"white"}} smooth to='/events/#photography'>Photography and Video editing <i class="fa-solid fa-arrow-up-right-from-square"></i></HashLink> </h3>
+                    <h3 className="text-white fs-5"><HashLink style={{"text-decoration":"none","color":"white"}} smooth to='/events/#photography'>Photography and Video editing <i className="fa-solid fa-arrow-up-right-from-square"></i></HashLink> </h3>
                         <p className="fs-6 text-white">Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo sed cum neque, rem provident ex. Laboriosam perspiciatis modi eveniet in?</p>
                     </div>
                 </div>
@@ -144,7 +207,7 @@ const Home = (props) => {
                 </div>  
                 <div className="content d-flex flex-column align-items-center justify-content-center">
                     <div>
-                    <h3 className="text-white fs-5"><HashLink style={{"text-decoration":"none","color":"white"}} smooth to='/events/#quiz'>Quiz <i class="fa-solid fa-arrow-up-right-from-square"></i></HashLink> </h3>
+                    <h3 className="text-white fs-5"><HashLink style={{"text-decoration":"none","color":"white"}} smooth to='/events/#quiz'>Quiz <i className="fa-solid fa-arrow-up-right-from-square"></i></HashLink> </h3>
                         <p className="fs-6 text-white">Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo sed cum neque, rem provident ex. Laboriosam perspiciatis modi eveniet in?</p>
                     </div>
                 </div>
