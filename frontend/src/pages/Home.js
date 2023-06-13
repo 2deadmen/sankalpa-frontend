@@ -160,7 +160,7 @@ const Home = (props) => {
   <section  className=''>
       <div className="events ">
         <div style={{"margin":"0% !important"}} className="container px-5  justify-content-center ">
-          <div className="row" data-aos='slide-right'>
+          <div className="row" data-aos='fade-up'>
             <h1 className='fs-1 eveenthead' data-aos="fade-in"  ><b className='animate-charcter'>EVENTS</b></h1>
            <hr />
          
