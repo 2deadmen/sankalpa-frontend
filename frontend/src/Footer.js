@@ -41,7 +41,7 @@ const Footer = () => {
    <hr />
         <div className=" footer footer-content ">
         <p>&copy; 2023 . All rights reserved.</p>
-        <p>Designed by <a href="https://github.com/2deadmen" style={{"text-decoration":"none","color":"white"}}>Kartik Hegde </a> & <a href="" style={{"text-decoration":"none","color":"white"}}>Halesh k </a></p>
+        <p>Designed by <a href="https://github.com/2deadmen" style={{"text-decoration":"none","color":"white"}}>Kartik Hegde </a> & <a href="https://github.com/Haleshkshivashimpi" style={{"text-decoration":"none","color":"white"}}>Halesh k </a></p>
       </div>
 
 
