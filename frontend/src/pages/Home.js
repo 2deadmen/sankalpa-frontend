@@ -69,7 +69,7 @@ const Home = (props) => {
 
 
 {/* logo section */} <section>
-<div align="center" className='container my-5'><img src={logo}  height="250" className='sankalp-logo'  data-aos="zoom-in" style={{"max-height": "50%","width":"50vw"}} alt="SLogo" /> 
+<div align="center" className='container my-5'><img src={logo}  height="250" className='sankalp-logo'  data-aos="zoom-in" style={{"max-height": "50%"}} alt="SLogo" /> 
 </div>
 
 <div className="countdown container">
