@@ -161,7 +161,7 @@ const Home = (props) => {
       <div className="events ">
         <div style={{"margin":"0% !important"}} className="container px-5  justify-content-center ">
           <div className="row" data-aos='slide-right'>
-            <h1 className='fs-1 eveenthead' data-aos="fade-in" align="center"><b className='animate-charcter'>EVENTS</b></h1>
+            <h1 className='fs-1 eveenthead' data-aos="fade-in"  ><b className='animate-charcter'>EVENTS</b></h1>
            <hr />
          
             <div className="box  firstrowevent">

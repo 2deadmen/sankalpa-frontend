@@ -7,7 +7,7 @@ import ScrollToTop from "react-scroll-to-top";
 const Navbar = () => {
   return (
     <div>
-    <nav id='navbar'><img src={nav} width="100%" alt="Logo" />  
+    <nav id='navbar'><img src={nav} className='navpic' width="100%" alt="Logo" />  
     <nav className="navbar navbar-expand-lg  navbar-dark ">
      
       <div className="container-fluid ">

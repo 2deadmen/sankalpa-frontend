@@ -33,7 +33,7 @@ const Footer = () => {
 
         </div>
         <div className='map justify-content-center'>
-   <iframe width="400" height="200" frameborder="0" src="https://www.bing.com/maps/embed?h=400&w=500&cp=15.441198324746921~75.01940395541874&lvl=17.195619338788426&typ=d&sty=r&src=SHELL&FORM=MBEDV8" >
+   <iframe width="250" height="200" frameborder="0" src="https://www.bing.com/maps/embed?h=400&w=500&cp=15.441198324746921~75.01940395541874&lvl=17.195619338788426&typ=d&sty=r&src=SHELL&FORM=MBEDV8" >
    </iframe>
    
 </div>
