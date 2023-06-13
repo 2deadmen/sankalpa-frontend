@@ -7,6 +7,19 @@ import advert from './advert.jpg'
 import { HashLink } from 'react-router-hash-link';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import photo from './photography.jpg'
+import quiz from './quiz.jpg'
+import vasuki from './vasuki.png'
+import pg1 from './pg1.png'
+import pg2 from './pg2.png'
+import pg3 from './pg3.png'
+import pg4 from './pg4.png'
+import pg5 from './pg5.png'
+import pg6 from './pg6.png'
+import pg7 from './pg7.png'
+import pg8 from './pg8.png'
+import pg12 from './pg12.png'
+
 
 import underline from './underline.png'
 const Home = (props) => {
@@ -88,7 +101,7 @@ const Home = (props) => {
 <div className= "containerpic">
     <div className= "card">
       <div className= "image">
-        <img  src ="https://i.pinimg.com/originals/a4/7b/a5/a47ba59b4a353e0928ef0551ca44f980.jpg"/>
+        <img  src ={vasuki}/>
       </div>
       <div className= "content">
         <h3>VASUKI VAIBHAV</h3>
@@ -159,7 +172,7 @@ const Home = (props) => {
                 <div className="content d-flex flex-column align-items-center justify-content-center">
                     <div>
                         <h3 className="text-white fs-5"><HashLink style={{"text-decoration":"none","color":"white"}} smooth to='/events/#Treasure'>Treasure Hunt <i className="fa-solid fa-arrow-up-right-from-square"></i></HashLink> </h3>
-                        <p className="fs-6 text-white">Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo sed cum neque, rem provident ex. Laboriosam perspiciatis modi eveniet in?</p>
+                        <p className="fs-6 text-white"><b>Embrace the Mystical Journey, Unveil the Power of Shamantaka Mani!</b></p>
                     </div>
                 </div>
             </div>
@@ -176,7 +189,7 @@ const Home = (props) => {
                 <div className="content d-flex flex-column align-items-center justify-content-center">
                     <div>
                     <h3 className="text-white fs-5"><HashLink style={{"text-decoration":"none","color":"white"}} smooth to='/events/#advertisement'>Advertising <i className="fa-solid fa-arrow-up-right-from-square"></i></HashLink> </h3>
-                        <p className="fs-6 text-white">Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo sed cum neque, rem provident ex. Laboriosam perspiciatis modi eveniet in?</p>
+                        <p className="fs-6 text-white"><b>Unleash Your Creativity, Conquer the  Canvas!</b></p>
                     </div>
                 </div>
             </div>
@@ -185,12 +198,12 @@ const Home = (props) => {
         <div className="box firstrowevent">
             <div className="body">
                 <div className="imgContainer">
-                    <img src="https://images.pexels.com/photos/3601422/pexels-photo-3601422.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt=""/>
+                    <img src={photo} alt=""/>
                 </div>
                 <div className="content d-flex flex-column align-items-center justify-content-center">
                     <div>
                     <h3 className="text-white fs-5"><HashLink style={{"text-decoration":"none","color":"white"}} smooth to='/events/#photography'>Photography and Video editing <i className="fa-solid fa-arrow-up-right-from-square"></i></HashLink> </h3>
-                        <p className="fs-6 text-white">Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo sed cum neque, rem provident ex. Laboriosam perspiciatis modi eveniet in?</p>
+                        <p className="fs-6 text-white"><b>Through the Lens and Beyond: Capturing Moments, Crafting Stories  !</b></p>
                     </div>
                 </div>
             </div>
@@ -203,12 +216,12 @@ const Home = (props) => {
      <div className="box  ">
             <div className="body">
                 <div className="imgContainer">
-                    <img src="https://images.pexels.com/photos/3601422/pexels-photo-3601422.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500" alt=""/>
+                    <img src={quiz} style={{"object-position":"center left"}} alt=""/>
                 </div>  
                 <div className="content d-flex flex-column align-items-center justify-content-center">
                     <div>
                     <h3 className="text-white fs-5"><HashLink style={{"text-decoration":"none","color":"white"}} smooth to='/events/#quiz'>Quiz <i className="fa-solid fa-arrow-up-right-from-square"></i></HashLink> </h3>
-                        <p className="fs-6 text-white">Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo sed cum neque, rem provident ex. Laboriosam perspiciatis modi eveniet in?</p>
+                        <p className="fs-6 text-white"><b>Unlock Knowledge, Triumph in the Ultimate Quiz Challenge !</b></p>
                     </div>
                 </div>
             </div>
@@ -231,7 +244,7 @@ const Home = (props) => {
           <div className="col-lg-4 col-md-6">
             <div className="gallery-item">
               <a href="assets/img/gallery/gallery-1.jpg" data-gall="portfolioGallery" className="gallery-lightbox">
-                <img src={logo} alt=""/>
+                <img src={pg1} alt=""/>
               </a>
             </div>
           </div>
@@ -239,7 +252,7 @@ const Home = (props) => {
           <div className="col-lg-4 col-md-6">
             <div className="gallery-item">
               <a href="assets/img/gallery/gallery-2.jpg" data-gall="portfolioGallery" className="gallery-lightbox">
-                <img src={logo} alt=""/>
+                <img src={pg2} alt=""/>
               </a>
             </div>
           </div>
@@ -247,7 +260,7 @@ const Home = (props) => {
           <div className="col-lg-4 col-md-6">
             <div className="gallery-item">
               <a href="assets/img/gallery/gallery-3.jpg" data-gall="portfolioGallery" className="gallery-lightbox">
-                <img src={logo}alt=""/>
+                <img src={pg3}alt=""/>
               </a>
             </div>
           </div>
@@ -255,7 +268,7 @@ const Home = (props) => {
           <div className="col-lg-4 col-md-6">
             <div className="gallery-item">
               <a href="assets/img/gallery/gallery-4.jpg" data-gall="portfolioGallery" className="gallery-lightbox">
-                <img src={logo} alt=""/>
+                <img src={pg4} alt=""/>
               </a>
             </div>
           </div>
@@ -263,7 +276,7 @@ const Home = (props) => {
           <div className="col-lg-4 col-md-6">
             <div className="gallery-item">
               <a href="assets/img/gallery/gallery-5.jpg" data-gall="portfolioGallery" className="gallery-lightbox">
-                <img src={logo} alt=""/>
+                <img src={pg5} alt=""/>
               </a>
             </div>
           </div>
@@ -271,47 +284,29 @@ const Home = (props) => {
           <div className="col-lg-4 col-md-6">
             <div className="gallery-item">
               <a href="assets/img/gallery/gallery-6.jpg" data-gall="portfolioGallery" className="gallery-lightbox">
-                <img src={logo} alt=""/>
+                <img src={pg6} alt=""/>
               </a>
             </div>
           </div>
           <div className="col-lg-4 col-md-6">
             <div className="gallery-item">
               <a href="assets/img/gallery/gallery-6.jpg" data-gall="portfolioGallery" className="gallery-lightbox">
-                <img src={logo} alt=""/>
+                <img src={pg7} alt=""/>
               </a>
             </div>
           </div> <div className="col-lg-4 col-md-6">
             <div className="gallery-item">
               <a href="assets/img/gallery/gallery-6.jpg" data-gall="portfolioGallery" className="gallery-lightbox">
-                <img src={logo} alt=""/>
+                <img src={pg8} alt=""/>
               </a>
             </div>
           </div> <div className="col-lg-4 col-md-6">
             <div className="gallery-item">
               <a href="assets/img/gallery/gallery-6.jpg" data-gall="portfolioGallery" className="gallery-lightbox">
-                <img src={logo} alt=""/>
+                <img src={pg12} alt=""/>
               </a>
             </div>
-          </div> <div className="col-lg-4 col-md-6">
-            <div className="gallery-item">
-              <a href="assets/img/gallery/gallery-6.jpg" data-gall="portfolioGallery" className="gallery-lightbox">
-                <img src={logo} alt=""/>
-              </a>
-            </div>
-          </div> <div className="col-lg-4 col-md-6">
-            <div className="gallery-item">
-              <a href="assets/img/gallery/gallery-6.jpg" data-gall="portfolioGallery" className="gallery-lightbox">
-                <img src={logo} alt=""/>
-              </a>
-            </div>
-          </div> <div className="col-lg-4 col-md-6">
-            <div className="gallery-item">
-              <a href="assets/img/gallery/gallery-6.jpg" data-gall="portfolioGallery" className="gallery-lightbox">
-                <img src={logo} alt=""/>
-              </a>
-            </div>
-          </div>
+          </div> 
 
         </div>
 

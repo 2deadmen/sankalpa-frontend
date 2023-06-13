@@ -4,6 +4,10 @@ import './events.css'
 import treasure from './treasure.jpg'
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import advert from './advert.jpg'
+import photo from './photography.jpg'
+import cultural from './cultural.jpg'
+import quiz from './quiz.jpg'
 
 const Events = () => {
   useEffect(() => {
@@ -36,15 +40,16 @@ const Events = () => {
                 </ul>  <h4>Student Co-ordinators</h4>
             
             <ul>
-                <li>Mr. Harsha Hiregoudar. M: 8861322818</li>
-                <li>Ms. Shreeja M. M: 8147188203</li>
+                <li>Mr. Sindhoor Hegde. M: <a href="tel:9483025205">9483025205</a>
+                </li>
+                <li>Ms. Rekha Kadam. M: <a href="tel:8147192609">8147192609</a></li>
               </ul>
           
             <h4>Event Co-ordinators</h4>
           
               <ul>
-                <li>Shri. Avinash Holihosur M: 7899155423</li>
-                <li>Shri. Vinayak Ingalagi M: 9964897105</li>
+                <li>Smt. Preeti Gujnal M: <a href="tel:9448003335">9448003335</a></li>
+                <li>Smt. Venus Mishra  M: <a href="tel:9686319889">9686319889</a></li>
               </ul>
               
             </p>
@@ -57,7 +62,7 @@ const Events = () => {
         <section id="advertisement">
           <h2 className='eveenthead'><b>Advertisement</b></h2>
           <div className="event">
-            <img src={treasure} alt="Advertisement"  className=" container event-image"/>
+            <img src={advert} alt="Advertisement"  className=" container event-image"/>
             <p data-aos='fade-up'>
               <h4>Instructions</h4>
               <ul>
@@ -67,15 +72,15 @@ const Events = () => {
               </ul>
             <h4>Student Co-ordinators</h4>
             <ul>
-                <li>Mr. Harsha Hiregoudar. M: 8861322818</li>
-                <li>Ms. Shreeja M. M: 8147188203</li>
+                <li>Mr. Harsha Hiregoudar. M: <a href="tel:8861322818">8861322818</a></li>
+                <li>Ms. Shreeja M. M: <a href="tel:8147188203">8147188203</a></li>
               </ul>
           
             <h4>Event Co-ordinators</h4>
           
               <ul>
-                <li>Shri. Avinash Holihosur M: 7899155423</li>
-                <li>Shri. Vinayak Ingalagi M: 9964897105</li>
+                <li>Shri. Avinash Holihosur M: <a href="tel:7899155423">7899155423</a></li>
+                <li>Shri. Vinayak Ingalagi M: <a href="tel:9964897105">9964897105</a></li>
               </ul>
             </p>
           </div>
@@ -85,8 +90,9 @@ const Events = () => {
 
           <h2 className='eveenthead'><b>Photography</b></h2>
           <div className="event">
-            <img src="images/5.jpg" alt="Photography" className="event-image"/>
+            <img src={photo} alt="Photography" className="event-image"/>
            <p data-aos='fade-up'>
+           <h4>Instructions</h4>
               <ul>
                 <li>Number of participants: 02.</li>
                 <li>One Participant should take 3 photos in JSS campus and another participant should edit it using photoshop and make it one picture.</li>
@@ -99,15 +105,15 @@ const Events = () => {
             <h4>Student Co-ordinators</h4>
             
               <ul>
-                <li>Mr. Megharaj SN M: 7892748464</li>
-                <li>Miss. Pragati Shetty M: 8277583779</li>
+                <li>Mr. Megharaj SN M: <a href="tel:7892748464">7892748464</a></li>
+                <li>Miss. Pragati Shetty M: <a href="tel:8277583779">8277583779</a></li>
               </ul>
             
             <h4>Event Co-ordinators</h4>
             
               <ul>
-                <li>Dr. Shashikant M: 9742350436</li>
-                <li>Shri. Prashant Medkinal M: 7406560114</li>
+                <li>Dr. Shashikant M: <a href="tel:9742350436">9742350436</a></li>
+                <li>Shri. Prashant Medkinal M: <a href="tel:7406560114">7406560114</a></li>
               </ul>
               </p> 
           </div>
@@ -116,8 +122,9 @@ const Events = () => {
         <section id="quiz">
            <h2 className='eveenthead'><b>Quiz</b></h2>
           <div className="event">
-            <img src="images/4.jpg" alt="Quiz" className="event-image"/>
+            <img src={quiz} style={{"object-position":"center bottom"}}  alt="Quiz" className="event-image"/>
             <p data-aos='fade-up'>
+            <h4>Instructions</h4>
               <ul>
                 <li>Number of participants: 02.</li>
                 <li>There will be 6 rounds including Elimination.</li>
@@ -131,15 +138,15 @@ const Events = () => {
             <h4>Student Co-ordinators</h4>
         
               <ul>
-                <li>Miss. Ruchita Rokade M: 8310231694</li>
-                <li>Mr. Durgesh Prabhu M: 9902010831</li>
+                <li>Miss. Ruchita Rokade M: <a href="tel:8310231694">8310231694</a></li>
+                <li>Mr. Durgesh Prabhu M: <a href="tel:9902010831">9902010831</a></li>
               </ul>
           
             <h4>Event Co-ordinators</h4>
         
               <ul>
-                <li>Dr. Ronil Manohar M: 9845787707</li>
-                <li>Smt. Rajani Talikoti M: 9480776761</li>
+                <li>Dr. Ronil Manohar M: <a href="tel:9845787707">9845787707</a></li>
+                <li>Smt. Rajani Talikoti M: <a href="tel:9480776761">9480776761</a></li>
               </ul>
                </p>
           </div>
@@ -149,8 +156,9 @@ const Events = () => {
         <section id="cultural">
         <h2 className='eveenthead'><b>Cultural </b></h2>
           <div className="event">
-            <img src="images/treasure_hunt.jpg" alt="Cultural" className="event-image"/>
+            <img src={cultural} alt="Cultural" className="event-image"/>
             <p data-aos='fade-up'>
+            <h4>Instructions</h4>
               <ul>
                 <li>Time limit: 6+1 Min.</li>
                 <li>Number of Students: 08 to 12.</li>
@@ -164,15 +172,15 @@ const Events = () => {
             <h4>Student Co-ordinators</h4>
 
               <ul>
-                <li>Miss. Varsha DM: 8073004476</li>
-                <li>Miss. Mahalakshmi M: 8197950726</li>
+                <li>Miss. Varsha DM: <a href="tel:8073004476">8073004476</a></li>
+                <li>Miss. Mahalakshmi M: <a href="tel:8197950726">8197950726</a></li>
               </ul>
        
             <h4>Event Co-ordinators</h4>
             
               <ul>
-                <li>Smt. Vibha S. Mugali M: 9448548033</li>
-                <li>Shri. Anand V. Korawar M: 9880691257</li>
+                <li>Smt. Vibha S. Mugali M: <a href="tel:9448548033">9448548033</a></li>
+                <li>Shri. Anand V. Korawar M: <a href="tel:9880691257">9880691257</a></li>
               </ul>
             </p>
           </div>
