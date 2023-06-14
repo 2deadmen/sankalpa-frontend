@@ -20,7 +20,7 @@ const Navbar = () => {
           <div className="navbar-nav ">
             <Link className="nav-link  active mx-2" aria-current="page" to='/'><h4><b>HOME</b></h4></Link>
             <Link className="nav-link  mx-2 " to='/events'><h5><b>EVENTS</b></h5></Link>
-            <a className="nav-link mx-2" href='https://drive.google.com/file/d/1MMuruPh0xjY2dDWmgUKAs1BQg78l6dJK/view?usp=drivesdk'><h5><b>BROCHURE</b></h5></a>
+            <a className="nav-link mx-2" href='https://drive.google.com/file/d/1MwCCtLVxiu_4XHuocSlbN5uLkyPTIxwc/view?usp=drivesdk'><h5><b>BROCHURE</b></h5></a>
             <HashLink className="nav-link mx-2" smooth to='/#gallery'><h5><b>MEMORIES</b></h5></HashLink>
            
             <Link className="nav-link  mx-2 " to='/about'><h5><b>ABOUT</b></h5></Link>
