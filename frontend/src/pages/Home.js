@@ -112,7 +112,7 @@ const Home = (props) => {
   </div>
   <div><h1 className="eveenthead" style={{"padding-top":"5vh"}}> <b>Harmonious Heights</b> </h1>
   <h2> <b>A Melodic Odyssey</b></h2>
-  <p style={{"padding-top":"5vh","text-align":"center"}} className="fs-5">Mesmerizing melodies by Vasuki Vaibhav, <br />igniting the stage on Day 2!</p>
+  <p style={{"padding-top":"5vh","text-align":"center"}} className="fs-5">Mesmerizing melodies by Vasuki Vaibhav, <br />igniting the stage on Day 1!</p>
   
 <div class="snowflakes" aria-hidden="true">
   <div class="snowflake">

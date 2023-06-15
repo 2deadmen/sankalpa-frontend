@@ -27,7 +27,9 @@ const Events = () => {
           <h2 className='eveenthead'><b>Treasure Hunt</b></h2>
           <div className="event">
             <img src={treasure} alt="Cultural Treasure Hunt" className="event-image"/>
-            <p data-aos='fade-up'><h4>Instructions</h4>
+            <p data-aos='fade-up'>
+              <h3>ANVESHANAM</h3>
+              <h4>Instructions</h4>
               <ul>
                 <li>Number of participants: 02.</li>
                 <li>Instructions will be given by the organizing team.</li>
@@ -88,15 +90,18 @@ const Events = () => {
     
         <section id="photography">
 
-          <h2 className='eveenthead'><b>Photography</b></h2>
+          <h2 className='eveenthead'><b>Photography & Videography</b></h2>
           <div className="event">
             <img src={photo} alt="Photography" className="event-image"/>
            <p data-aos='fade-up'>
+            <h3>CHITRA VYUH</h3>
            <h4>Instructions</h4>
               <ul>
                 <li>Number of participants: 02.</li>
                 <li>One Participant should take 3 photos in JSS campus and another participant should edit it using photoshop and make it one picture.</li>
                 <li>Participants will have 5 minutes to finish.</li>
+                <li>Capturing through "MOBILE" only. No other gadgets allowed throughout the event.</li>
+                <li>Capturing outside the campus is prohibitted.</li>
                 <li>The photo should be of nature/buildings/idols without any person in it.</li>
                 <li>One participant should record video of at least five minutes from campus and another participant should edit it using VITA Mobile editor and output video should be of one minute.</li>
                 <li>Participants will be given ten minutes to finish the video editing.</li>
